@@ -1,0 +1,15 @@
+/* 
+    You can do lots of things with CSS for instance within the HTML you can do the following:
+ 
+    Use an in line style tag in the form <body style="background-color: blue;">
+
+    Use an overal CSS style sheet in the head with:
+    <style>
+        body {
+            background-color: blue;
+        }
+    </style>
+
+    For height and width and many other fields you can place choose fixed size with px or em (pixels or emphasis)
+    or you can use a % of the total
+*/
