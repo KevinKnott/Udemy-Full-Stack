@@ -1,11 +1,13 @@
 body {
-  margin: 0px 0px 0px 0px;
+  margin: 0px;
   /* Will align everything that doesnt have a width set */
   text-align: center;
+  /* Font family is used to affect all text in the body */
+  font-family: 'Merriweather', serif;
 }
 
 h1 {
-  padding-top: 0px;
+  margin-top: 0px;
   /* margin-bottom: -20px; */
   /* This  setting 0 margin and horizontally centered only if the body is centered
   also this requires width to be set to break the block element style
@@ -13,13 +15,22 @@ h1 {
   margin: 0 auto;
   */
   position: relative;
+  font-family: 'Sacramento', cursive;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Using class selectors to differentiate divs */
 .top-container {
   background-color: #e4f9f5;
   position: relative;
-  top: 100px;
+  padding-top: 100px;
 
   /* border: solid 10px;
   height: 200px;
