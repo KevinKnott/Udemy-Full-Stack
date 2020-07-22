@@ -1,6 +1,7 @@
 .h1 {
-  font-family: 'Montserrat-Black', sans-serif;
-  /* font-size: 900px; */
+  font-family: 'Montserrat-Black';
+  size: 3rem;
+  line-height: 1.5;
 }
 
 #title {
