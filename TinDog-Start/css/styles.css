@@ -18,6 +18,16 @@ h1 {
   line-height: 1.5;
 }
 
+h3 {
+  font-family: 'Monterserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+p {
+  color: #8f8f8f;
+}
+
 /* Navbar styling */
 
 .navbar {
@@ -45,7 +55,26 @@ h1 {
 
 /* Title Image */
 #iphone-img {
-  width: 70%;
-
+  width: 60%;
   transform: rotate(25deg);
+}
+
+/* Features */
+
+#features {
+  padding: 7% 15%;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 4.5%;
+}
+
+.feature-imgs {
+  color: #ef8172;
+  margin-bottom: 1rem;
+}
+
+.feature-imgs:hover {
+  color: #ff4c68;
 }
