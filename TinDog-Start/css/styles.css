@@ -35,6 +35,17 @@ p {
   line-height: 1.5;
 }
 
+/* Sections */
+
+.colored-section {
+  background-color: #ff4c68;
+  color: #fff;
+}
+
+.white-section {
+  background-color: #fff;
+}
+
 /* Navbar styling */
 
 .navbar {
@@ -62,14 +73,9 @@ p {
 
 /* Title */
 
-#title {
-  background-color: #ff4c68;
-  color: #fff;
-  text-align: left;
-}
-
 /* This is a nifty css where you specify the id first and then the container within that id */
 #title .container-fluid {
+  text-align: left;
   padding: 3% 15% 7%;
 }
 
@@ -95,7 +101,6 @@ p {
 /* Features */
 
 #features {
-  background-color: #fff;
   position: relative;
 }
 
@@ -121,7 +126,6 @@ p {
 
 #testimonials {
   background-color: #ef8172;
-  color: #fff;
 }
 
 .testimonial-text {
@@ -161,16 +165,11 @@ p {
 }
 
 /* Call to Action */
-#cta {
-  background-color: #ff4c68;
-  color: #fff;
-}
 
 /* Contact/Copyright */
 
 #footer {
   font-size: 1rem;
-  background-color: #fff;
 }
 
 .social-icon {
