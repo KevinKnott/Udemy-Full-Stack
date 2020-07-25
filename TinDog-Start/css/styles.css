@@ -141,3 +141,36 @@ p {
 .pricing-column {
   padding: 3% 2%;
 }
+
+/* Call to Action */
+#cta {
+  background-color: #ff4c68;
+  color: #fff;
+  text-align: center;
+  padding: 7% 15%;
+}
+
+#cta-heading {
+  font-family: 'Monterserrat', sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+/* Contact/Copyright */
+
+#footer {
+  text-align: center;
+  font-size: 1rem;
+  background-color: #fff;
+  padding: 7% 15%;
+}
+
+.social-icon {
+  color: #000;
+  margin: 20px 10px;
+}
+
+.links {
+  margin-bottom: 1.5rem;
+}
