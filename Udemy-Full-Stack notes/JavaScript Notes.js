@@ -26,10 +26,10 @@ console.log(myAge);
 
 console.log(
   'Hello ' +
-    myName +
-    ' you have lived for ' +
-    myAge +
-    ' years what an achievement',
+  myName +
+  ' you have lived for ' +
+  myAge +
+  ' years what an achievement',
 );
 
 // Simple function that reverses variables a and b
@@ -49,10 +49,10 @@ function test() {
 var tweet = prompt('Enter your tweet: ');
 alert(
   'Your tweet has ' +
-    tweet.length +
-    ' characters, you have ' +
-    (140 - tweet.length) +
-    'characters left.',
+  tweet.length +
+  ' characters, you have ' +
+  (140 - tweet.length) +
+  'characters left.',
 );
 
 // Taking a slice of arrays/strings
@@ -61,10 +61,19 @@ alert('Your valid message reads as: ' + tweet.slice(0, 140));
 
 // Simple function to capitalize first character of a users name
 var usersName = prompt('What is your name?');
-function capitalizeFirstLetter(user: string): string {
+
+// TypeScript specific I am taking a user (string) and returning the updated string
+// function capitalizeFirstLetter(user: string): string {
+//   var firstLetter = user.slice(0, 1);
+//   user = firstLetter.toUpperCase() + user.slice(1);
+//   return user;
+// }
+
+function capitalizeFirstLetter(user) {
   var firstLetter = user.slice(0, 1);
   user = firstLetter.toUpperCase() + user.slice(1);
   return user;
 }
+
 
 console.log(capitalizeFirstLetter(usersName));
