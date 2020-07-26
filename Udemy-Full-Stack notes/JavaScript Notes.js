@@ -117,8 +117,9 @@ var yourWeight = prompt("How much do you weigh?");
 var yourHeight = prompt("How tall are you?");
 
 function calculateBMI(weight, height) {
-  return weight / (Math.pow(height, 2));
+  var actual = weight / (Math.pow(height, 2));
+  return Math.round(actual);
 }
 
-// console.log(calculate(BMI(yourWeight, yourHeight)));
+console.log(calculate(BMI(yourWeight, yourHeight)));
 console.log(calculateBMI(65, 1.8))
