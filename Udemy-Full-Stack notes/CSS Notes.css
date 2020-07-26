@@ -1,0 +1,205 @@
+/* 
+    You can do lots of things with CSS for instance within the HTML you can do the following:
+ 
+    Use an in line style tag in the form <body style="background-color: blue;">
+
+    Use an overal CSS style sheet in the head with:
+    <style>
+        body {
+            background-color: blue;
+        }
+    </style>
+
+    For height and width and many other fields you can place choose fixed size with px or em (pixels or emphasis)
+    or you can use a % of the total
+
+    Display Properties:
+    
+      Block:  Blocks off the whole width
+      Examples: h1-6 P div
+      
+      inline: Only as large as it needs to be cant control width
+                Examples: Span img and a
+      
+      inline-block: Create a width controlled box with a set width on the same line
+
+      None: Hides the element
+
+    Position:
+
+    Static - the default 
+    Relative - move only the exact element from the original and the new position they are opposite (circular t r b l)
+    absolute - Adds margin to the container (body or div)
+    fixed - Keeps something locked in a fixed position even while scrolling
+
+
+    Font-Size:
+
+    You can use any of the following for all sizes:
+
+    px - static pixel size
+    em - M width dynamic 
+    rem - M width dynamic removes inherited width
+    % - Size percentage
+
+    Please note that 
+
+    16px = 100% = 1em
+
+*/
+
+/* These are considered Tag selectors */
+body {
+  background-color: #eaf6f6;
+  text-align: center;
+}
+hr {
+  border-style: dotted none none;
+  border-color: grey;
+  border-width: 5px;
+  width: 5%;
+}
+
+/* 
+    You can put in certain filters to change css based off of when certain actions happen
+    for instance if you want to change an img tag for when someone is hovering over you would do the following
+*/
+
+img:hover {
+  background-color: gold;
+}
+
+/* 
+  These are considered class selectors classes can be reused
+  can be reused
+  can have multiple different classes
+*/
+
+.funky_chicken {
+  background-color: pink;
+}
+
+/* 
+  These are considered id selectors
+  id's are unique
+  These overide tag selectors  
+*/
+#heading {
+  background-color: blue;
+}
+
+/* For boxes there are 3 possible settings to update to add space to our objects */
+div {
+  /* The margin is from the outside container to the border */
+  margin: 0px 0px 0px 0px;
+  /* The border is obviously the border of the object */
+  border: 0px 0px 0px 0px;
+  /* The padding is from the border to the inside elements */
+  padding: 0px 0px 0px 0px;
+
+  /* 
+    Also please note that the above settings use something called the circle rule
+    in which you go clockwise around the setting so top right bottom and then left
+    for each setting
+  */
+}
+
+red-block {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  /* 
+    This is to move the box it will technically be in the same spot but add a margin 
+    (so it can block other stuff)
+  */
+  position: relative;
+  /* Adds a 50px margin on top of the box */
+  top: 50px;
+}
+
+blue-block {
+  background-color: blue;
+  height: 100px;
+  width: 100px;
+  /* 
+    Position will move the object to have a margin to the parent (div or body) this also
+    removes the original box so that it moves and others can be where this was (like 
+    deleting the element)
+  */
+  position: absolute;
+  /* Adds a 50px margin on bottom of the box */
+  top: 50px;
+}
+
+/* You can float an image to the left or right of text with the float property */
+.computer-img {
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+
+.python-img {
+  width: 25%;
+  float: right;
+  margin-left: 30px;
+}
+
+/* Make text move back over Clear is the opposite of float */
+.developing-description {
+  clear: left;
+}
+
+.python-description {
+  clear: right;
+}
+
+/* 
+  CSS Media Query 
+  
+  @media <type> <feature>
+*/
+
+@media print {
+  h1 {
+    color: red;
+  }
+}
+
+@media screen {
+}
+
+@media (max-width: 900px) {
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+}
+
+@media speech {
+}
+
+/* Multiple selectors */
+
+h1,
+p {
+  color: red;
+}
+
+/* 
+  hierarchical
+  selector (parent) <space> selector (child) 
+  it is read from right to left  
+*/
+.container-fluid h1 {
+  /* All h1 that are within a container should be red */
+  color: red;
+}
+
+/* 
+  Combined Selectors
+  No space read left to right
+*/
+
+.container-fluid.title {
+  /* Basically the class="container-fluid title" but you can combine html elements ids and classes for this */
+  color: red;
+}

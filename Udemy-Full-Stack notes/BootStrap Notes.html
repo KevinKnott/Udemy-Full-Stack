@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- This is a boot strap template that includes everything we might need -->
+    <meta charset="utf-8" />
+    <title>BootStrap Notes</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!--
+        Here is a way to add a navbar and honestly I just followed the documentation
+        There is a lot of premade clases which you can take advantage of and really 
+        not have to do anything extra
+    -->
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">TinDog</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarToggler"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Download</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Grid Layout System -->
+    <!-- This is a way to set a grid layout using rows and columns -->
+    <div class="row">
+      <!-- 
+        Using the class col you will get a non-responsive (doesn't change for 
+        differnt form factors) and fills in dividing the screen equally between all columns
+      -->
+      <div class="col" style="background-color: red; border: 1px solid;">
+        col
+      </div>
+      <div class="col" style="background-color: red; border: 1px solid;">
+        col
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- 
+        Using the class col you will get a non-responsive (doesn't change for 
+        differnt form factors) and fills in dividing the screen bassed off the numbers
+        1 - 12 where 12 is the whole screen
+      -->
+      <div class="col-6" style="background-color: green; border: 1px solid;">
+        Col-6
+      </div>
+      <div class="col-6" style="background-color: green; border: 1px solid;">
+        Col-6
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- 
+        Using the class col you will get a responsive width based off of what device you choose
+        lg/md/sm 
+      -->
+      <div
+        class="col-md-6"
+        style="background-color: yellow; border: 1px solid;"
+      >
+        Col-md-6
+      </div>
+      <div
+        class="col-md-6"
+        style="background-color: yellow; border: 1px solid;"
+      >
+        Col-md-6
+      </div>
+    </div>
+
+    <!-- Rows to mimic Airbnb aka Reduce number of items per screen size -->
+    <div class="row">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6"
+        style="background-color: pink; border: 1px solid;"
+      >
+        Dynamic
+      </div>
+      <div
+        class="col-lg-3 col-md-4 col-sm-6"
+        style="background-color: pink; border: 1px solid;"
+      >
+        Dynamic
+      </div>
+      <div
+        class="col-lg-3 col-md-4 col-sm-6"
+        style="background-color: pink; border: 1px solid;"
+      >
+        Dynamic
+      </div>
+      <div
+        class="col-lg-3 col-md-4 col-sm-6"
+        style="background-color: pink; border: 1px solid;"
+      >
+        Dynamic
+      </div>
+    </div>
+
+    <!-- Udemy Challenge -->
+    <div class="row">
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+      <div
+        class="col-lg-2 col-md-3 col-sm-12"
+        style="background-color: purple; border: 1px solid;"
+      >
+        Challenge
+      </div>
+    </div>
+
+    <!-- Pretty Simple Buttons must include class btn and whatever style you want -->
+    <button class="btn btn-lg btn-dark" type="button">Download</button>
+    <button class="btn btn-lg btn-outline-light" type="button">
+      Download
+    </button>
+    <!-- Container Systems -->
+    <!-- This first container will resize but it has a margin on left and right that is slightly jarring to watch -->
+    <div class="container" style="background-color: salmon;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur.
+    </div>
+
+    <!-- This container is fluid and is less jarring as it takes up the full screen as it gets smaller -->
+    <div class="container-fluid" style="background-color: seagreen;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur.
+    </div>
+
+    <!-- Carousel -->
+    <div
+      id="carouselExampleSlidesOnly"
+      class="carousel slide"
+      data-ride="carousel"
+      data-interval="1000"
+      data-pause="hover"
+    >
+      <div class="carousel-inner">
+        <div
+          class="carousel-item active"
+          style="height: 500px; background-color: red;"
+        >
+          <img class="d-block w-100" src="..." alt="First slide" />
+        </div>
+        <div
+          class="carousel-item"
+          style="height: 500px; background-color: white;"
+        >
+          <img class="d-block w-100" src="..." alt="Second slide" />
+        </div>
+        <div
+          class="carousel-item"
+          style="height: 500px; background-color: blue;"
+        >
+          <img class="d-block w-100" src="..." alt="Third slide" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Card -->
+    <div class="card">
+      <div class="card-header">
+        Card Header
+      </div>
+      <div class="card-body">
+        Card Body
+      </div>
+      <div class="card-footer">
+        Card Footer
+      </div>
+    </div>
+
+    <!-- These scripts are needed to make sure that navbar and other bootstrap options work -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
