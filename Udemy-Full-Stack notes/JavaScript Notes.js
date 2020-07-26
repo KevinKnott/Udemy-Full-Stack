@@ -71,7 +71,8 @@ var usersName = prompt('What is your name?');
 
 function capitalizeFirstLetter(user) {
   var firstLetter = user.slice(0, 1);
-  user = firstLetter.toUpperCase() + user.slice(1);
+  var restOfName = user.slice(1);
+  user = firstLetter.toUpperCase() + restOfName.toLowerCase();
   return user;
 }
 
