@@ -78,3 +78,20 @@ function capitalizeFirstLetter(user) {
 
 
 console.log(capitalizeFirstLetter(usersName));
+
+
+// Numbers 
+// Same as python really
+var dogAge = prompt("What is your dogs age?");
+humanAge = (dogAge - 2) * 4 + 21;
+console.log("Your dog is " + humanAge + " in human years!");
+
+var div = 11 / 2
+var rem = 11 % 2
+console.log(div + " " + rem)
+
+// Simple for loop
+var x = 0;
+for (; x <= 10; x++) {
+  console.log(x)
+}
