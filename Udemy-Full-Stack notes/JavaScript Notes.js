@@ -79,6 +79,18 @@ function capitalizeFirstLetter(user) {
 
 console.log(capitalizeFirstLetter(usersName));
 
+// Another function to make sure I understand arguments 
+function lifeInWeeks(ageInYears) {
+  var left = 90 - ageInYears
+  var months = left * 12;
+  var weeks = months * 52;
+  var days = left * 365;
+
+  console.log("You have " + days + " days, " + weeks + " weeks, and " + months + " months left.")
+
+}
+
+lifeInWeeks(56);
 
 // Numbers 
 // Same as python really
@@ -90,8 +102,13 @@ var div = 11 / 2
 var rem = 11 % 2
 console.log(div + " " + rem)
 
-// Simple for loop
+// Simple for loop 
+// ++ increment by one
+// -- decrement by one
+// *= increment by mult whatever number is after 
+// /= decrement by div whatever number is after 
 var x = 0;
 for (; x <= 10; x++) {
   console.log(x)
 }
+
