@@ -83,7 +83,7 @@ console.log(capitalizeFirstLetter(usersName));
 function lifeInWeeks(ageInYears) {
   var left = 90 - ageInYears
   var months = left * 12;
-  var weeks = months * 52;
+  var weeks = left * 52;
   var days = left * 365;
 
   console.log("You have " + days + " days, " + weeks + " weeks, and " + months + " months left.")
