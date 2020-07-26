@@ -112,3 +112,13 @@ for (; x <= 10; x++) {
   console.log(x)
 }
 
+// Creating simple BMI calculator in metric
+var yourWeight = prompt("How much do you weigh?");
+var yourHeight = prompt("How tall are you?");
+
+function calculateBMI(weight, height) {
+  return weight / (Math.pow(height, 2));
+}
+
+// console.log(calculate(BMI(yourWeight, yourHeight)));
+console.log(calculateBMI(65, 1.8))
