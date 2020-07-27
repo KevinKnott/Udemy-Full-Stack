@@ -107,9 +107,9 @@ console.log(div + " " + rem);
 // -- decrement by one
 // *= increment by mult whatever number is after 
 // /= decrement by div whatever number is after 
-var x = 0;
-for (; x <= 10; x++) {
-  console.log(x);
+var index = 0;
+for (; index <= 10; index++) {
+  console.log(index);
 }
 
 // Creating simple BMI calculator in metric
@@ -186,19 +186,19 @@ if (guestList.includes(potentialGuest)) {
 function fizzBuzz(n) {
   var result = [];
   var temp = "";
-  for (x = 1; x <= n; x++) {
+  for (index = 1; index <= n; index++) {
     temp = "";
 
-    if (x % 3 === 0) {
+    if (index % 3 === 0) {
       temp += "Fizz";
     }
 
-    if (x % 5 === 0) {
+    if (index % 5 === 0) {
       temp += "Buzz";
     }
 
     if (temp.length === 0) {
-      result.push(x.toString());
+      result.push(index.toString());
     } else {
       result.push(temp);
     }
@@ -207,3 +207,44 @@ function fizzBuzz(n) {
 
   return result
 }
+
+// Fizz Buzz using while
+function fizzBuzz(n) {
+  var result = [];
+  var temp = "";
+  var index = 0;
+
+  while (index < n) {
+    index++
+    temp = "";
+
+    if (index % 3 === 0) {
+      temp += "Fizz";
+    }
+
+    if (index % 5 === 0) {
+      temp += "Buzz";
+    }
+
+    if (temp.length === 0) {
+      result.push(index.toString());
+    } else {
+      result.push(temp);
+    }
+
+  }
+
+  return result
+}
+
+// Who is Paying
+var names = ["Angela", "Ben", "Jenny", "Michael", "Chloe"];
+
+function whosPaying(names) {
+  var number = Math.random() * (names.length - 1);
+  number = Math.round(number);
+
+  return (names[number] + " is going to buy lunch today!");
+}
+
+console.log(whosPaying(names));
