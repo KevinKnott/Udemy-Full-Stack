@@ -148,5 +148,22 @@ if (percent > 70) {
   alert("That is just a normal percent");
 }
 else {
-  alert("Just a normal percent here");
+  alert("Big Yikes");
+}
+
+// Is leap year?
+function isLeapYear(year) {
+  var msg = "Not leap year.";
+
+  if (year % 4 === 0) {
+    if (year % 100 !== 0) {
+      msg = "Leap year.";
+    } else {
+      if (year % 400 === 0) {
+        msg = "Leap year.";
+      }
+    }
+  }
+
+  return msg;
 }
