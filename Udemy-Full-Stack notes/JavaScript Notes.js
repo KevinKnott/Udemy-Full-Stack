@@ -167,3 +167,15 @@ function isLeapYear(year) {
 
   return msg;
 }
+
+// Collections and Arrays
+var guestList = ["Kevin", "Kayla", "Jonothan", "Tiara", "Nicholas", "Komron"];
+console.log(guestList[0] + guestList.length);
+
+var potentialGuest = prompt("What is your name?");
+
+if (guestList.includes(potentialGuest)) {
+  alert("Welcome to the party " + potentialGuest);
+} else {
+  alert("You are not in the guest list please leave.")
+}
