@@ -248,3 +248,37 @@ function whosPaying(names) {
 }
 
 console.log(whosPaying(names));
+
+// Fibonacci sequence
+function fibonacci(n) {
+  if (n === 1) {
+    return 1;
+  }
+  if (n === 0) {
+    return 0;
+  }
+
+  return fibonacci(n - 2) + fibonacci(n - 1);
+}
+
+console.log(fibonacci(14))
+
+// Fibonacci but creating an array of all values up to n
+// This can be updated to only use the result [0,1] thus usin O(1) space instead
+function fibonacci_iterative(n) {
+  var result = [0, 1]
+  if (n === 1) {
+    return result;
+  }
+  if (n === 0) {
+    return [0];
+  }
+
+  for (i = 2; i <= n; i++) {
+    result.push(result[i - 2] + result[i - 1]);
+  }
+
+  return result
+}
+
+console.log(fibonacci_iterative(14))
