@@ -100,7 +100,7 @@ console.log("Your dog is " + humanAge + " in human years!");
 
 var div = 11 / 2
 var rem = 11 % 2
-console.log(div + " " + rem)
+console.log(div + " " + rem);
 
 // Simple for loop 
 // ++ increment by one
@@ -109,7 +109,7 @@ console.log(div + " " + rem)
 // /= decrement by div whatever number is after 
 var x = 0;
 for (; x <= 10; x++) {
-  console.log(x)
+  console.log(x);
 }
 
 // Creating simple BMI calculator in metric
@@ -127,6 +127,26 @@ console.log(calculateBMI(65, 1.8))
 // Random numbers
 // Always random between 0 and .9999999999999999999 (a billion random number)
 
-var n = Math.random();
-console.log(n)
-console.log("Random percent: " Math.floor(n * 100))
+var percent = Math.random();
+percent = percent * 100;
+percent = Math.floor(percent) + 1;
+console.log("Random percent: " + percent);
+
+var dice = Math.random();
+dice = dice * 6;
+dice = Math.floor(dice) + 1;
+console.log("Random Dice: " + dice)
+
+//  Control Flow
+//  === is equal and same type
+//  ==  is equal can be different types
+//  !== is not equal to
+//  The rest are the same as python
+if (percent > 70) {
+  alert("Wow above 70% is quite rare");
+} else if (percent > 30 && percent <= 70) {
+  alert("That is just a normal percent");
+}
+else {
+  alert("Just a normal percent here");
+}
