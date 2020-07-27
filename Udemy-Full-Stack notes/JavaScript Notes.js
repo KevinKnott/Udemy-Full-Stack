@@ -179,3 +179,31 @@ if (guestList.includes(potentialGuest)) {
 } else {
   alert("You are not in the guest list please leave.")
 }
+
+
+// Fizz Buzz
+// Print 1 to n where everything divisible by 3 is replaced with Fizz and 5 is replaced with Buzz (you can concatenate)
+function fizzBuzz(n) {
+  var result = [];
+  var temp = "";
+  for (x = 1; x <= n; x++) {
+    temp = "";
+
+    if (x % 3 === 0) {
+      temp += "Fizz";
+    }
+
+    if (x % 5 === 0) {
+      temp += "Buzz";
+    }
+
+    if (temp.length === 0) {
+      result.push(x.toString());
+    } else {
+      result.push(temp);
+    }
+
+  }
+
+  return result
+}
