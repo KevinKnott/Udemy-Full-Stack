@@ -123,3 +123,10 @@ function calculateBMI(weight, height) {
 
 console.log(calculate(BMI(yourWeight, yourHeight)));
 console.log(calculateBMI(65, 1.8))
+
+// Random numbers
+// Always random between 0 and .9999999999999999999 (a billion random number)
+
+var n = Math.random();
+console.log(n)
+console.log("Random percent: " Math.floor(n * 100))
