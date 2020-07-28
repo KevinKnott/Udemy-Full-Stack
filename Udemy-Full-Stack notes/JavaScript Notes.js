@@ -282,3 +282,15 @@ function fibonacci_iterative(n) {
 }
 
 console.log(fibonacci_iterative(14))
+
+// This is how you add scripts to website however you want to load JS last so you can query by all selectors
+// <!-- Inline JS -->
+// <body onload="alert('Hello');">
+//   <h1>Hello</h1>
+//   <!-- Script Tag -->
+//   <script type="text/javascript">
+//     alert('Hello World');
+//   </script>
+
+//   <!-- Script Tag with Source -->
+//   <script src="index.js"></script>
