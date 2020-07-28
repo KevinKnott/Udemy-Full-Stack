@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Dicee</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
-
+    <meta charset="utf-8" />
+    <!-- Icons from fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/ca995c802f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Dice</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
     <div class="container">
       <h1>Refresh Me</h1>
 
       <div class="dice">
         <p>Player 1</p>
-        <img class="img1" src="">
+        <img class="img1" src="images/dice1.png" />
       </div>
 
       <div class="dice">
         <p>Player 2</p>
-        <img class="img2" src="">
+        <img class="img2" src="images/dice1.png" />
       </div>
-
     </div>
 
-
+    <div class="container">
+      <button class="btn Roll" onclick="playGame();">Roll the Dice!</button>
+    </div>
   </body>
 
+  <script src="index.js"></script>
   <footer>
     www 🎲 App Brewery 🎲 com
   </footer>
