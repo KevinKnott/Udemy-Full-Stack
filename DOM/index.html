@@ -15,11 +15,12 @@
       alert('Hello World');
     </script> -->
 
-    <h1>Hello</h1>
+    <h1 id="title">Hello</h1>
 
+    <a href="https://www.google.com">Google</a>
     <input type="checkbox" />
 
-    <button style=":active color:red;">Click Me</button>
+    <button class="btn">Click Me</button>
 
     <ul>
       <li class="list">
@@ -79,5 +80,22 @@
   documents.querySelector("li.item");  No space all in one item
   documents.querySelector("#list a")
 
+  Get by selector with all possible (an array)
+  document.querySelectorAll("#list .item")[2].style.color = "blue";
 
+  You can change CSS with JS using DOM Style object it is camel cased and no dashes
+  document.querySelector(".btn").style.backgroundColor = "yellow"
+
+
+  Add class styling with js
+  document.querySelector('.btn').classList.add("invisible");
+  document.querySelector('.btn').classList.remove("invisible");
+  document.querySelector('.btn').classList.toggle("invisible");
+
+  innerHTML gets all tags and text within the H1 element
+  this means you can add tags and elements
+  document.querySelector("h1").innerHTML
+
+  textContent only gets the text of the H1 element
+  document.querySelector("h1").textContent
  -->
