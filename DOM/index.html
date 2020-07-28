@@ -9,13 +9,75 @@
   <!-- Inline JS -->
   <!-- <body onload="alert('Hello');"> -->
   <body>
-    <h1>Hello</h1>
+    <!-- <h1>Hello</h1> -->
     <!-- Script Tag -->
     <!-- <script type="text/javascript">
       alert('Hello World');
     </script> -->
 
+    <h1>Hello</h1>
+
+    <input type="checkbox" />
+
+    <button style=":active color:red;">Click Me</button>
+
+    <ul>
+      <li class="list">
+        <a href="https://www.google.com">Google</a>
+      </li>
+      <li class="list">Second</li>
+      <li class="list">Third</li>
+    </ul>
+
     <!-- Script Tag with Source -->
     <script src="index.js"></script>
   </body>
 </html>
+
+<!-- DOM notes -->
+<!-- 
+  The DOM contains the whole entire webpage
+
+  You can use the dom like an object as it has proprties (getter/setters) and methods to move around
+  
+  Function runs code anywhere
+  Method is a function that only runs on an object
+
+  Properties
+    .innerHTML
+    .style
+    .firstChild
+
+  Methods
+    click()
+    appendChild()
+    setAttribute()
+
+  document.lastElementChild.children.item(index)
+  
+  This will change the 3rd list item style to be colored purple
+  document.getElementsByTagName("li").item(2).style.color = Purple 
+  document.getElementsByTagName("li")[2].style.color = Purple 
+
+  This will get how many li elements there are
+  documents.getElementsByTagName("li").length
+
+  This will get all elements by class (Note all elements will get everything back in an array)
+  documents.getElemeentsByClass("btn")
+
+  This will get the only item with id
+  documents.getElementbyId("id").innerHTML = "Good Bye";
+  
+  Get by selector (So you can use tag, class and id)
+  Single item (first found)
+  documents.querySelector("h1");
+  documents.querySelector("#title");
+  documents.querySelector(".btn");
+
+  Multi
+  documents.querySelector("li a ");    Space means tag within tag
+  documents.querySelector("li.item");  No space all in one item
+  documents.querySelector("#list a")
+
+
+ -->
