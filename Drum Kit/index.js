@@ -21,21 +21,20 @@ var buttons = document.querySelectorAll(".drum");
 // This is the same as
 // Adding Event Listeners
 for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", playSound);
+    buttons[i].addEventListener("click", function () {
+        playSound(this.textContent);
+    });
 
 }
 
 document.addEventListener("keydown", function (event) {
     // pass in event key
     // console.log(event.key);
-    playSound(event);
+    playSound(event.key);
 })
 
-function playSound(event) {
-    console.log(event.key);
-
-    switchKey = event.key || this.textContent;
-    switch (switchKey) {
+function playSound(key) {
+    switch (key) {
         case "w":
             snare.play()
             break;
