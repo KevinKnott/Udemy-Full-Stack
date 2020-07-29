@@ -5,7 +5,7 @@ function rollDice() {
     return diceRoll
 }
 
-function determinWinner(player1, player2) {
+function determineWinner(player1, player2) {
 
     if (player1 > player2) {
         return "<i class=\"fas fa-trophy\"></i> Player 1 wins!"
@@ -26,6 +26,6 @@ function playGame() {
     playerID[0].setAttribute("src", "images/dice" + player1 + ".png");
     playerID[1].setAttribute("src", "images/dice" + player2 + ".png");
 
-    var newTitle = determinWinner(player1, player2);
+    var newTitle = determineWinner(player1, player2);
     document.querySelector("h1").innerHTML = newTitle;
 }
