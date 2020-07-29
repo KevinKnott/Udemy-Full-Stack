@@ -22,8 +22,9 @@ function playGame() {
     var player2 = rollDice()
 
     // document.querySelector("a").setAttribute("href", "https://bing.com")
-    document.querySelector(".img1").setAttribute("src", "images/dice" + player1 + ".png");
-    document.querySelector(".img2").setAttribute("src", "images/dice" + player2 + ".png");
+    var playerID = document.querySelectorAll("img");
+    playerID[0].setAttribute("src", "images/dice" + player1 + ".png");
+    playerID[1].setAttribute("src", "images/dice" + player2 + ".png");
 
     var newTitle = determinWinner(player1, player2);
     document.querySelector("h1").innerHTML = newTitle;
