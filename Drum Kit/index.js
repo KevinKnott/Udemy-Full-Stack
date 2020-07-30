@@ -23,14 +23,16 @@ var buttons = document.querySelectorAll(".drum");
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
         playSound(this.textContent);
+        buttonAnimation(this.textContent);
     });
 
 }
 
 document.addEventListener("keydown", function (event) {
     // pass in event key
-    // console.log(event.key);
+    // console.log(key);
     playSound(event.key);
+    buttonAnimation(event.key)
 })
 
 function playSound(key) {
@@ -61,6 +63,23 @@ function playSound(key) {
             break;
     }
 }
+
+function buttonAnimation(key) {
+    var activeButton = document.querySelector("." + key + "")
+
+    if (activeButton === null) {
+        // console.log("Unknown button pressed")
+        return
+    }
+
+    activeButton.classList.toggle("pressed");
+
+    setTimeout(function () {
+        activeButton.classList.toggle("pressed")
+    }
+        , 150)
+}
+
 
 var tom1 = new Audio("sounds/tom-1.mp3");
 var tom2 = new Audio("sounds/tom-2.mp3");
