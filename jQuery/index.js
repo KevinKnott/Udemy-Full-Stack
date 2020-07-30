@@ -49,7 +49,16 @@ $("input").keydown(function () {
 // Listen to all
 $(document).keydown(function () {
     console.log("You pressed the key " + event.key + " in the body");
+    $("h1").text(event.key)
 });
+
+
+$("h1").on("mouseover", function () {
+    $("h1").css("color", "red");
+});
+
+
 function doSometing() {
     alert("The button was pressed!" + this);
 }
+
