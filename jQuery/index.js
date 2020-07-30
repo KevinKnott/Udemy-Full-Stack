@@ -39,7 +39,16 @@ $("h1").click(function () {
 
 $("button").click(function () {
     $("h1").css("color", "pink");
-    doSometing();
+    // doSometing();
+    // $("h1").hide();
+    // $("h1").show();
+    // $("h1").toggle();
+    // $("h1").fadeOut();
+    // $("h1").fadeIn();
+    // $("h1").fadeToggle();
+    // $("h1").slideIn();
+    // $("h1").slideOut();
+    $("h1").slideToggle();
 });
 
 $("input").keydown(function () {
@@ -73,4 +82,4 @@ $("h1").prepend("<button>New Button Here!</button>");
 $("h1").append("<button>New Button Here!</button>");
 
 // Remove elements
-$("button").remove()
+// $("button").remove();
