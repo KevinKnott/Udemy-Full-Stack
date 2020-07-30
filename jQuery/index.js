@@ -42,10 +42,14 @@ $("button").click(function () {
     doSometing();
 });
 
-$("input").keypress(function () {
+$("input").keydown(function () {
     console.log("You pressed the key " + event.key);
 });
 
+// Listen to all
+$(document).keydown(function () {
+    console.log("You pressed the key " + event.key + " in the body");
+});
 function doSometing() {
     alert("The button was pressed!" + this);
 }
