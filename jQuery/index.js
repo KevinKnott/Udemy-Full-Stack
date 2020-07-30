@@ -48,7 +48,16 @@ $("button").click(function () {
     // $("h1").fadeToggle();
     // $("h1").slideIn();
     // $("h1").slideOut();
-    $("h1").slideToggle();
+    // $("h1").slideToggle();
+
+    // You can also use the animate method which will let you use custom css
+    // Only works with numerical values
+    // Use percent and rem within "" (string values)
+    // $("h1").animate({ opacity: 0.5 });
+
+    // Chaining
+    $("h1").slideUp().slideDown().animate({ opacity: 0.5 });
+
 });
 
 $("input").keydown(function () {
