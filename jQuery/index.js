@@ -40,7 +40,11 @@ $("h1").click(function () {
 $("button").click(function () {
     $("h1").css("color", "pink");
     doSometing();
-})
+});
+
+$("input").keypress(function () {
+    console.log("You pressed the key " + event.key);
+});
 
 function doSometing() {
     alert("The button was pressed!" + this);
