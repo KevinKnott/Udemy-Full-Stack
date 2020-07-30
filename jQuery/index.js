@@ -62,3 +62,15 @@ function doSometing() {
     alert("The button was pressed!" + this);
 }
 
+// Add html elements
+// Before Tag
+$("h1").before("<button>New Button Here!</button>");
+// After Tag
+$("h1").after("<button>New Button Here!</button>");
+// In h1 tag before text
+$("h1").prepend("<button>New Button Here!</button>");
+// in h1 tag after text
+$("h1").append("<button>New Button Here!</button>");
+
+// Remove elements
+$("button").remove()
