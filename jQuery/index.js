@@ -26,3 +26,22 @@ $("button").text("Don't Click Me");
 
 // Set html
 $("button").html("<strong>CLICK ME!</strong>");
+
+// Update attributes
+console.log($("a").attr("href"));
+$("a").attr("href", "https://yahoo.com");
+console.log("H1 has the classes: " + $("h1").attr("class"));
+
+// Add event listener
+$("h1").click(function () {
+    $("h1").css("color", "purple");
+});
+
+$("button").click(function () {
+    $("h1").css("color", "pink");
+    doSometing();
+})
+
+function doSometing() {
+    alert("The button was pressed!" + this);
+}
