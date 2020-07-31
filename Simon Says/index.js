@@ -33,11 +33,9 @@ function Game() {
         this.simonOrder.push(color);
         this.level += 1;
         changeLevelTitle("Level " + this.level);
-        $("#" + color).addClass("pressed")
+        $("#" + color).fadeIn(100).fadeOut(100).fadeIn(100);
         playButtonSound(color)
-        setTimeout(function () {
-            $("#" + color).removeClass("pressed")
-        }, 100)
+
     }
 
     // wait for button click?
@@ -47,9 +45,9 @@ function Game() {
                 this.index++;
 
                 if (this.index === this.level) {
+                    this.index = 0;
                     setTimeout(function () {
                         ourGame.addColor();
-                        this.index = 0;
                     }, 1000);
                 }
             } else {
@@ -115,6 +113,13 @@ function playButtonSound(id) {
 
 }
 
+function animatePress(color) {
+    $("#" + color).addClass("pressed");
+    setTimeout(function () {
+        $("#" + color).removeClass("pressed");
+    }, 100);
+}
+
 
 // Event handlers
 
@@ -128,5 +133,6 @@ $(".btn").on("click", function () {
     // console.log(this.id);
     ourGame.checkColor(this.id);
     playButtonSound(this.id);
+    animatePress(this.id);
 
 });
