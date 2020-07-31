@@ -32,11 +32,12 @@ function Game() {
 
         this.simonOrder.push(color);
         this.level += 1;
+        changeLevelTitle("Level " + this.level);
         $("#" + color).addClass("pressed")
         playButtonSound(color)
         setTimeout(function () {
             $("#" + color).removeClass("pressed")
-        }, 200)
+        }, 100)
     }
 
     // wait for button click?
@@ -46,9 +47,10 @@ function Game() {
                 this.index++;
 
                 if (this.index === this.level) {
-                    ourGame.addColor();
-                    changeLevelTitle("Level " + this.level);
-                    this.index = 0;
+                    setTimeout(function () {
+                        ourGame.addColor();
+                        this.index = 0;
+                    }, 1000);
                 }
             } else {
                 gameOver();
@@ -114,11 +116,15 @@ function playButtonSound(id) {
 }
 
 
+// Event handlers
+
 $(document).on("keydown", function () {
+    // When any key is pressed start game (if game isnt started)
     startGame();
 });
 
 $(".btn").on("click", function () {
+    // When a button is clicked check color and play the sound
     // console.log(this.id);
     ourGame.checkColor(this.id);
     playButtonSound(this.id);
