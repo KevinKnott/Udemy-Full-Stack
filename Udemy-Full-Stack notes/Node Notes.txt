@@ -1,0 +1,15 @@
+Simple Installation steps
+
+npm update -g < node / npm >
+
+npm init (create new project)
+
+npm install (package)
+
+// Internal module use
+// const fs = require('fs');
+
+// fs.copyFileSync("file1.txt", "file2.txt");
+
+Package.json is used to store basic dependencies and scripts for node
+Package-lock.json has exact package and versions as well as dependencies
