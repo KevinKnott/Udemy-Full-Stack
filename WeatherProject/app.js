@@ -1,20 +1,28 @@
 const express = require("express");
 const https = require("https");
-const dotenv = require('dotenv').config();
+require('dotenv').config();
+const bodyParser = require("body-parser");
 
 const app = express();
-
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", function (req, res) {
 
-    const endpoint = "https://api.openweathermap.org/data/2.5/weather?q=Grapevine,TX,US&appid=" + process.env.weatherAPIKEY + "&units=imperial"
+    res.sendFile(__dirname + "\\index.html");
+})
+
+app.post("/", function (req, res) {
+    // console.log(req.body.cityName);
+    var query = req.body.cityName;
+    var units = "imperial"
+    const endpoint = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + process.env.weatherAPIKEY + "&units=" + units
     https.get(endpoint, function (weatherResponse) {
         console.log(weatherResponse.statusCode);
 
         weatherResponse.on("data", function (data) {
             // Take hex data and format into JSON
             weatherData = JSON.parse(data);
-            console.log(weatherData);
+            // console.log(weatherData);
 
             // Reverse the process
             // var something = {
@@ -29,20 +37,20 @@ app.get("/", function (req, res) {
             var weatherIcon = weatherData.weather[0].icon;
 
             const imageURL = "https://openweathermap.org/img/wn/" + weatherIcon + "@4x.png";
-            console.log(imageURL);
+            // console.log(imageURL);
 
-            console.log("It is " + temperature + " degrees F and it feels like " + feelsLike);
-            console.log("The weather outside currently " + weatherDescription);
+            // console.log("It is " + temperature + " degrees F and it feels like " + feelsLike);
+            // console.log("The weather outside currently " + weatherDescription);
 
-            res.write("<h1>It is " + temperature + " degrees F and it feels like " + feelsLike + "</h1>");
+            res.write("<h1>The temperature in " + query + " is " + temperature + " and it feels like " + feelsLike + "</h1>");
             res.write("<p>The weather outside is currently " + weatherDescription + "</p>");
             res.write("<img src=\"" + imageURL + "\" alt='Weather Icon' />");
             res.send();
         })
     })
-
-    // res.sendFile(__dirname + "\\index.html");
 })
+
+
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000");
