@@ -36,6 +36,19 @@ app.post("/", function (req, res) {
     res.send("Your calculation of adding " + num1 + " + " + num2 + " is " + result);
 
     // I now need body-parser to parse body form data
+})
+
+
+app.get("/bmicalculator", function (req, res) {
+    res.sendFile(__dirname + "\\bmiCalculator.html");
+})
+
+app.post("/bmicalculator", function (req, res) {
+    var height = Number(req.body.height);
+    var weight = Number(req.body.weight);
+    var result = weight / (Math.pow(height, 2));
+
+    res.send("<h2>Your BMI is " + result + " </h2>")
 
 })
 // // Hand other routes
