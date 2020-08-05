@@ -42,7 +42,7 @@ app.post("/", function (req, res) {
         auth: "Kevin:" + process.env.mailchimpAPIKey
     }
 
-    console.log(url, options)
+    // console.log(url, options)
     // Create a http request with the above options
     const mailChimpRequest = https.request(url, options, function (mailChimpResponse) {
         mailChimpResponse.on("data", function (data) {
