@@ -46,7 +46,7 @@ app.post("/", function (req, res) {
     // Create a http request with the above options
     const mailChimpRequest = https.request(url, options, function (mailChimpResponse) {
         mailChimpResponse.on("data", function (data) {
-            console.log(JSON.parse(data));
+            // console.log(JSON.parse(data));
 
             if (mailChimpResponse.statusCode == 200) {
                 res.sendFile(__dirname + "/success.html");
@@ -64,6 +64,10 @@ app.post("/", function (req, res) {
     mailChimpRequest.write(jsonData);
     mailChimpRequest.end();
 
+})
+
+app.post("/failure", function (req, res) {
+    res.redirect("/");
 })
 
 app.listen(3000, function () {
