@@ -47,6 +47,15 @@ app.post("/", function (req, res) {
     const mailChimpRequest = https.request(url, options, function (mailChimpResponse) {
         mailChimpResponse.on("data", function (data) {
             console.log(JSON.parse(data));
+
+            if (mailChimpResponse.statusCode == 200) {
+                res.sendFile(__dirname + "/success.html");
+                // console.log("Good Request");
+            } else {
+                res.sendFile(__dirname + "/failure.html");
+                // console.log("Request failed please try again");
+            }
+
         })
 
     })
