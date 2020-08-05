@@ -1,5 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const https = require("https");
+dotenv = require("dotenv").config();
 
 
 const app = express();
@@ -13,11 +15,46 @@ app.get("/", function (req, res) {
 })
 
 app.post("/", function (req, res) {
+    // You must add name field to form and have it post to / for this to work
     var fname = req.body.fname;
     var lname = req.body.lname;
     var email = req.body.email;
 
-    console.log(fname, lname, email);
+    var data = {
+        members: [
+            {
+                email_address: email,
+                status: "subscribed",
+                mergeField: {
+                    FNAME: fname,
+                    LNAME: lname,
+                }
+            }
+        ]
+    }
+    // console.log(fname, lname, email);
+
+    // Convert to json for mailchimp api request
+    var jsonData = JSON.stringify(data);
+    var url = "https://" + process.env.serverID + ".api.mailchimp.com/3.0/lists/" + process.env.listID;
+    var options = {
+        method: "Post",
+        auth: "Kevin:" + process.env.mailchimpAPIKey
+    }
+
+    console.log(url, options)
+    // Create a http request with the above options
+    const mailChimpRequest = https.request(url, options, function (mailChimpResponse) {
+        mailChimpResponse.on("data", function (data) {
+            console.log(JSON.parse(data));
+        })
+
+    })
+
+    // Write this data with request
+    mailChimpRequest.write(jsonData);
+    mailChimpRequest.end();
+
 })
 
 app.listen(3000, function () {
