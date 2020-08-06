@@ -6,6 +6,12 @@
     <title>Kevin's To Do List!</title>
   </head>
   <body>
-    <h1>It's a <%= weekDay %>!</h1>
+    <!-- <h1>It's a < %= weekDay %>!</h1> -->
+
+    <% if (weekDay === "Saturday" || weekDay === "Sunday") { %>
+    <h1 style="color: purple;"><%= weekDay %> ToDo List</h1>
+    <% } else { %>
+    <h1 style="color: blue;"><%= weekDay %> ToDo List</h1>
+    <% } %>
   </body>
 </html>
