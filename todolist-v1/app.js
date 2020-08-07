@@ -64,7 +64,7 @@ app.get("/", function (req, res) {
 })
 
 app.post("/", function (req, res) {
-    console.log(req.body.list)
+    // console.log(req.body.list)
 
     if (req.body.list === "Work List") {
         workItems.push(req.body.newItem)
@@ -85,15 +85,9 @@ app.get("/work", function (req, res) {
     res.render("list", { listTitle: "Work List", newListItems: workItems });
 })
 
-app.post("/work", function (req, res) {
-    workItems.push(req.body.newItem);
-
-    // console.log(item);
-    // Will not work
-    // res.render("list", { newListItem: item })
-    res.redirect("/work");
+app.get("/about", function (req, res) {
+    res.render("about");
 })
-
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server has started on port", process.env.PORT || 3000);
 })

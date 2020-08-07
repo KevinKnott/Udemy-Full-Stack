@@ -1,50 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>Kevin's To Do List!</title>
-  </head>
-  <body>
-    <div class="box" id="heading">
-      <h1><%= listTitle %></h1>
-    </div>
-    <!-- <h1>It's a < %= weekDay %>!</h1> -->
+<%- include("header") -%>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+<!-- <h1>It's a < %= weekDay %>!</h1> -->
 
-    <div class="box" id="lol">
-      <% for( let index = 0; index < newListItems.length; index++ ) { %>
-      <div class="item">
-        <input type="checkbox" name="" id="" />
-        <p>
-          <%= newListItems[index] %>
-        </p>
-      </div>
-      <% } %>
+<div class="box" id="lol">
+  <% for( let index = 0; index < newListItems.length; index++ ) { %>
+  <div class="item">
+    <input type="checkbox" name="" id="" />
+    <p>
+      <%= newListItems[index] %>
+    </p>
+  </div>
+  <% } %>
 
-      <form class="item" action="/" method="POST">
-        <input
-          type="text"
-          name="newItem"
-          id="newItem"
-          placeholder="New Item"
-          autocomplete="off"
-        />
-        <button type="submit" name="list" value="<%= listTitle %>">+</button>
-      </form>
-    </div>
-    <!-- <ul>
+  <form class="item" action="/" method="POST">
+    <input
+      type="text"
+      name="newItem"
+      id="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+<!-- <ul>
       < !-- Move below to our list -->
-    <!-- <li>Buy food</li>
+<!-- <li>Buy food</li>
       <li>Cook food</li>
       <li>Eat food</li> -->
-    <!-- This will not work <li>< %= newListItem %></li> -->
-    <!-- < % for( let index = 0; index < newListItems.length; index++ ) { %>
+<!-- This will not work <li>< %= newListItem %></li> -->
+<!-- < % for( let index = 0; index < newListItems.length; index++ ) { %>
       <li>< %= newListItems[index] %></li>
       < % } %>
     </ul> -->
 
-    <!-- <form action="/" method="POST">
+<!-- <form action="/" method="POST">
       <input
         type="text"
         name="newItem"
@@ -54,10 +46,9 @@
       <button type="submit">Add to list!</button>
     </form> -->
 
-    <!-- < % if (weekDay === "Saturday" || weekDay === "Sunday") { %>
+<!-- < % if (weekDay === "Saturday" || weekDay === "Sunday") { %>
     <h1 style="color: purple;">< %= weekDay %> ToDo List</h1>
     < % } else { %>
     <h1 style="color: blue;">< %= weekDay %> ToDo List</h1>
     < % } %>  -->
-  </body>
-</html>
+<%- include("footer") -%>
