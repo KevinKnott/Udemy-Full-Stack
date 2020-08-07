@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 require('dotenv').config();
 
 const app = express();
-var items = [];
+var items = ["Buy Food", "Cook Food", "Eat Food"];
 
 // Tells app to use EJS as the vie engine
 app.set('view engine', 'ejs');
