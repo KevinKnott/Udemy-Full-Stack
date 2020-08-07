@@ -3,22 +3,22 @@ const bodyParser = require("body-parser");
 require('dotenv').config();
 
 const app = express();
-var items = ["Buy Food", "Cook Food", "Eat Food"];
+let items = ["Buy Food", "Cook Food", "Eat Food"];
 
 // Tells app to use EJS as the vie engine
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", function (req, res) {
 
-    var today = new Date();
+    let today = new Date();
 
-    var options = {
+    let options = {
         weekday: "long",
         day: "numeric",
         month: "long"
     };
 
-    var day = today.toLocaleDateString("en-US", options);
+    let day = today.toLocaleDateString("en-US", options);
 
     // if (today.getDay() === 6 || today.getDay() === 0) {
     //     // res.write("Its the freaken weekend baby");
