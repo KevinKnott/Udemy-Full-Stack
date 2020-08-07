@@ -8,6 +8,8 @@ let items = ["Buy Food", "Cook Food", "Eat Food"];
 // Tells app to use EJS as the vie engine
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
 app.get("/", function (req, res) {
 
     let today = new Date();

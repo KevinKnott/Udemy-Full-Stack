@@ -3,24 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Kevin's To Do List!</title>
   </head>
   <body>
+    <div class="box" id="heading">
+      <h1><%= weekDay %></h1>
+    </div>
     <!-- <h1>It's a < %= weekDay %>!</h1> -->
-    <h1><%= weekDay %></h1>
 
-    <ul>
-      <!-- Move below to our list -->
-      <!-- <li>Buy food</li>
+    <div class="box" id="lol">
+      <% for( let index = 0; index < newListItems.length; index++ ) { %>
+      <div class="item">
+        <input type="checkbox" name="" id="" />
+        <p>
+          <%= newListItems[index] %>
+        </p>
+      </div>
+      <% } %>
+
+      <form class="item" action="/" method="POST">
+        <input
+          type="text"
+          name="newItem"
+          id="newItem"
+          placeholder="New Item"
+          autocomplete="off"
+        />
+        <button type="submit">+</button>
+      </form>
+    </div>
+    <!-- <ul>
+      < !-- Move below to our list -->
+    <!-- <li>Buy food</li>
       <li>Cook food</li>
       <li>Eat food</li> -->
-      <!-- This will not work <li>< %= newListItem %></li> -->
-      <% for( let index = 0; index < newListItems.length; index++ ) { %>
-      <li><%= newListItems[index] %></li>
-      <% } %>
-    </ul>
+    <!-- This will not work <li>< %= newListItem %></li> -->
+    <!-- < % for( let index = 0; index < newListItems.length; index++ ) { %>
+      <li>< %= newListItems[index] %></li>
+      < % } %>
+    </ul> -->
 
-    <form action="/" method="POST">
+    <!-- <form action="/" method="POST">
       <input
         type="text"
         name="newItem"
@@ -28,7 +52,7 @@
         placeholder="Take dog for a walk"
       />
       <button type="submit">Add to list!</button>
-    </form>
+    </form> -->
 
     <!-- < % if (weekDay === "Saturday" || weekDay === "Sunday") { %>
     <h1 style="color: purple;">< %= weekDay %> ToDo List</h1>
