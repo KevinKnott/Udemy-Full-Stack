@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="box" id="heading">
-      <h1><%= weekDay %></h1>
+      <h1><%= listTitle %></h1>
     </div>
     <!-- <h1>It's a < %= weekDay %>!</h1> -->
 
@@ -30,7 +30,7 @@
           placeholder="New Item"
           autocomplete="off"
         />
-        <button type="submit">+</button>
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
       </form>
     </div>
     <!-- <ul>

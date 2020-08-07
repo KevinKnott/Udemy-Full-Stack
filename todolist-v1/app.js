@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const app = express();
 let items = ["Buy Food", "Cook Food", "Eat Food"];
+let workItems = []
 
 // Tells app to use EJS as the vie engine
 app.set('view engine', 'ejs');
@@ -59,16 +60,38 @@ app.get("/", function (req, res) {
 
     // res.send();
     // First variable is on EJS side and second is the variable in your app.js
-    res.render("list", { weekDay: day, newListItems: items });
+    res.render("list", { listTitle: day, newListItems: items });
 })
 
 app.post("/", function (req, res) {
-    items.push(req.body.newItem);
+    console.log(req.body.list)
+
+    if (req.body.list === "Work List") {
+        workItems.push(req.body.newItem)
+        res.redirect("/work");
+    } else {
+        items.push(req.body.newItem);
+        res.redirect("/");
+    }
+
 
     // console.log(item);
     // Will not work
     // res.render("list", { newListItem: item })
-    res.redirect("/");
+    // res.redirect("/");
+})
+
+app.get("/work", function (req, res) {
+    res.render("list", { listTitle: "Work List", newListItems: workItems });
+})
+
+app.post("/work", function (req, res) {
+    workItems.push(req.body.newItem);
+
+    // console.log(item);
+    // Will not work
+    // res.render("list", { newListItem: item })
+    res.redirect("/work");
 })
 
 app.listen(process.env.PORT || 3000, function () {
