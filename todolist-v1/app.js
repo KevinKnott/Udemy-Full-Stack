@@ -1,10 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js");
 require('dotenv').config();
 
+// View Exports
+// console.log(date);
+// console.log(date());
+
+
 const app = express();
-let items = ["Buy Food", "Cook Food", "Eat Food"];
-let workItems = []
+const items = ["Buy Food", "Cook Food", "Eat Food"];
+const workItems = []
 
 // Tells app to use EJS as the vie engine
 app.set('view engine', 'ejs');
@@ -13,53 +19,7 @@ app.use(express.static("public"));
 
 app.get("/", function (req, res) {
 
-    let today = new Date();
-
-    let options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long"
-    };
-
-    let day = today.toLocaleDateString("en-US", options);
-
-    // if (today.getDay() === 6 || today.getDay() === 0) {
-    //     // res.write("Its the freaken weekend baby");
-    //     day = "Weekend";
-    // } else {
-    //     // res.write("Its a weekday --- BOOO");
-    //     day = "Weekday"
-    // }
-
-    // switch (today.getDay()) {
-    //     case 0:
-    //         day = "Sunday";
-    //         break;
-    //     case 1:
-    //         day = "Monday";
-    //         break;
-    //     case 2:
-    //         day = "Tuesday";
-    //         break;
-    //     case 3:
-    //         day = "Wednesday";
-    //         break;
-    //     case 4:
-    //         day = "Thursday";
-    //         break;
-    //     case 5:
-    //         day = "Friday";
-    //         break;
-    //     case 6:
-    //         day = "Saturday";
-    //         break;
-    //     default:
-    //         console.log("invalid date please review", today);
-    //         break;
-    // }
-
-    // res.send();
-    // First variable is on EJS side and second is the variable in your app.js
+    const day = date.getDate();
     res.render("list", { listTitle: day, newListItems: items });
 })
 
