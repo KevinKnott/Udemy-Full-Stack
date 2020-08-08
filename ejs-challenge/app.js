@@ -32,8 +32,10 @@ app.get("/compose", function (req, res) {
 })
 
 app.post("/compose", function (req, res) {
-  posts.push(req.body.newPost);
-  // console.log(posts)
+  var title = req.body.postTitle;
+  var body = req.body.postBody;
+  posts.push({ "title": title, "body": body });
+  console.log(posts)
 
   res.redirect("/")
 })
