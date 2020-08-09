@@ -45,6 +45,28 @@ app.post("/compose", function (req, res) {
   res.redirect("/")
 })
 
+// Create a params to get post and forward it to page
+app.get("/post/:postName", function (req, res) {
+  console.log(req.params.postName)
+  let post = null;
+
+  for (let index = 0; index < posts.length; index++) {
+    if (posts[index].title === req.params.postName) {
+      post = posts[index]
+    }
+  }
+  console.log(post)
+
+  if (post == null) {
+    console.log("Invalid Post Title")
+    res.redirect("/")
+  } else {
+    res.render("post", { post: post })
+  }
+
+
+
+})
 
 
 
