@@ -50,25 +50,21 @@ app.post("/compose", function (req, res) {
 app.get("/posts/:postName", function (req, res) {
   // console.log(req.params.postName)
   const requested = _.lowerCase(req.params.postName);
-  let result = null;
+  let found = false;
 
   posts.forEach(post => {
     let lowerTitle = _.lowerCase(post.title)
     // console.log(requested, lowerTitle)
     if (lowerTitle === requested) {
-      result = post
+      res.render("post", { post: post });
+      found = true;
     }
   })
-  // console.log(post)
 
-  if (result == null) {
-    console.log("Invalid Post Title")
+  // console.log("Invalid Post Title")
+  if (!found) {
     res.redirect("/")
-  } else {
-    res.render("post", { post: result })
   }
-
-
 
 })
 
