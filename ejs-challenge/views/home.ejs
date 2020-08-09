@@ -3,4 +3,7 @@
 <h1>Home</h1>
 <p><%= homeStartingContent %></p>
 
-<%- include("partials/footer") -%>
+<% for( let index = 0; index < posts.length; index++ ) { %>
+<h2><%= posts[index].title %></h2>
+<p><%= posts[index].content %></p>
+<% } %> <%- include("partials/footer") -%>
