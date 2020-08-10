@@ -62,5 +62,33 @@ WHERE name="Pen";
 UPDATE "products"
 SET stock = 12
 WHERE name = "Pencil";
--- To Destroy an object
 
+-- To Destroy an object
+DELETE FROM "products"
+WHERE id = 2;
+
+
+-- Adding Tables with foreign key ( Links two separate tables together)
+CREATE TABLE orders (
+  	id INT NOT NULL,
+  	order_number INT,
+  	customer_id INT,
+  	product_id INT,
+  	PRIMARY KEY (id), 
+    FOREIGN KEY (customer_id) REFERENCES customers(id), -- You use the customer id to index the customer table primary key id
+  	FOREIGN KEY (product_id) REFERENCES customers(id)
+  )
+
+INSERT INTO "orders"
+VALUES (1, 4632, 2, 1); 
+
+INSERT INTO "orders"
+VALUES (2, 3254, 1, 1); 
+
+-- Now for the weird stuff AKA inner joins
+-- Select the fields we want to display, what table it is from and join 
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address
+from orders
+INNER JOIN customers on orders.customer_id = customers.id
+-- The join is joining customers table to orders table on the orders.customer_id 
+-- to the customers table based on id
