@@ -92,3 +92,9 @@ from orders
 INNER JOIN customers on orders.customer_id = customers.id
 -- The join is joining customers table to orders table on the orders.customer_id 
 -- to the customers table based on id
+
+-- Adding the item they are buying as well
+SELECT orders.order_number, customers.first_name, customers.last_name, customers.address, products.name, products.price
+from orders
+INNER JOIN customers on orders.customer_id = customers.id
+INNER JOIN products on orders.product_id = products.id;
