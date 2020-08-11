@@ -18,4 +18,29 @@ const fruit = new Fruit({
 
 fruit.save()
 
+// Insert many
+const kiwi = new Fruit({
+    name: "Kiwi",
+    rating: 7,
+    review: "Nice and sweet"
+})
+const orange = new Fruit({
+    name: "Orange",
+    rating: 3,
+    review: "You have to peel it"
+})
+const banana = new Fruit({
+    name: "Banana",
+    rating: 10,
+    review: "The best around"
+})
+
+Fruit.insertMany([kiwi, orange, banana], function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("The fruits were added!");
+    }
+})
+
 mongoose.disconnect()
