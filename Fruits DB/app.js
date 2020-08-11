@@ -16,7 +16,7 @@ const fruit = new Fruit({
     review: "Pretty solid"
 })
 
-fruit.save()
+// fruit.save()
 
 // Insert many
 const kiwi = new Fruit({
@@ -35,11 +35,24 @@ const banana = new Fruit({
     review: "The best around"
 })
 
-Fruit.insertMany([kiwi, orange, banana], function (err) {
+// Fruit.insertMany([kiwi, orange, banana], function (err) {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("The fruits were added!");
+//     }
+// })
+
+// Find all that we have added
+Fruit.find(function (err, fruits) {
     if (err) {
         console.log(err);
     } else {
-        console.log("The fruits were added!");
+        // Logs an array of the fruits that we have found
+        fruits.forEach(function (fruit) {
+            console.log(fruit.name);
+        })
+        console.log(fruits);
     }
 })
 
