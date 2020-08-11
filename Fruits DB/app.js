@@ -85,8 +85,7 @@ const personSchema = new mongoose.Schema({
     name: String,
     age: Number,
     favoriteFruit: {
-        type: fruitSchema,
-        required: true
+        type: fruitSchema
     }
 })
 
@@ -107,7 +106,22 @@ const person = new Person({
 })
 
 
+// person.save()
+
+const person = new Person({
+    name: "Kevin",
+    age: 26,
+})
+
 person.save()
 
+
+Person.updateOne({ name: "John" }, { favoriteFruit: banana }, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Updated Kevin's favorite fruit to be a banana");
+    }
+})
 
 mongoose.connection.close()
