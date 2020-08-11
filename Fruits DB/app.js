@@ -52,8 +52,8 @@ Fruit.find(function (err, fruits) {
         fruits.forEach(function (fruit) {
             console.log(fruit.name);
         })
-        console.log(fruits);
+        // console.log(fruits);
     }
 })
 
-mongoose.disconnect()
+mongoose.connection.close()
