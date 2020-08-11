@@ -15,3 +15,7 @@ const fruit = new Fruit({
     rating: 7,
     review: "Pretty solid"
 })
+
+fruit.save()
+
+mongoose.disconnect()
