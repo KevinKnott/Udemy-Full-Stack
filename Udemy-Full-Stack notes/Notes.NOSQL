@@ -36,3 +36,20 @@ db.products.insertOne(
         price: 0.80
     }
 )
+
+-- Reading
+db.<collection>.find(query, projection)
+
+-- Show all things in product
+db.products.find()
+
+-- Queries are in form $gt $lt $and 
+db.products.find({name: "Pencil"})
+
+-- Return all products with price above 1
+db.products.find({price: {$gt: 1}})
+
+-- Find the Object with id of 1 and return only name (primary key will show unless you specify not to have it)
+-- Note 1 is true and 0 is false
+db.products.find({_id: 1} , {name: 1, _id:0})
+
