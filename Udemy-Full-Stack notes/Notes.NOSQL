@@ -1,0 +1,38 @@
+-- Notes on the Mongo CRUD operations
+-- https://docs.mongodb.com/manual/crud/
+-- Create 
+-- Read
+-- Update
+-- Destroy
+
+
+-- Help command while in shell is helpful
+
+-- Lists all dbs
+show dbs 
+
+-- Switch to new DB
+use shopDB
+-- Show DB
+db 
+
+-- Create Data (insert one or insert many)
+-- db.<collection>.insertOne( Java Script Object)
+db.products.insertOne(
+    {
+        _id: 1,
+        name: "Pen",
+        price: 1.20
+    }
+)
+
+-- List collections
+show collections
+
+db.products.insertOne(
+    {
+        _id: 2,
+        name: "Pencil",
+        price: 0.80
+    }
+)
