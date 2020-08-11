@@ -60,3 +60,42 @@ db.products.updateOne({_id: 2}, {$set: {stock: 12}})
 
 -- Delete
 db.products.deleteOne({name: "Pencil"})
+
+-- More complex one to many relationships
+
+db.products.insertOne(
+    {
+        _id: 2,
+        name: "Pencil",
+        price: 0.80
+        rating: [
+            {
+                authName = "Kevin"
+                rating = 5
+                review = "Best feeling pencil in the west"
+            },
+            {
+                authName = "Jon"
+                rating = 1
+                review = "Stupid communist pencil"
+            }
+        ]
+    }
+)
+
+-- Please note you can refrence ids like the following
+{
+    _id: 1,
+    name: "Pen",
+    price: 1.20
+}
+{
+    _id: 2,
+    name: "Pencil",
+    price: 0.80
+}
+
+{
+    orderNum = 3234,
+    productsOrdered: [1,2]
+}
