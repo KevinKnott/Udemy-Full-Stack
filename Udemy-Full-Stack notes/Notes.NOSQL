@@ -53,3 +53,10 @@ db.products.find({price: {$gt: 1}})
 -- Note 1 is true and 0 is false
 db.products.find({_id: 1} , {name: 1, _id:0})
 
+-- Update
+-- Add stock value to products
+db.products.updateOne({_id: 1}, {$set: {stock: 32}})
+db.products.updateOne({_id: 2}, {$set: {stock: 12}})
+
+-- Delete
+db.products.deleteOne({name: "Pencil"})
