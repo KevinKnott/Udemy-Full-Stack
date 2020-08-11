@@ -63,4 +63,22 @@ Fruit.find(function (err, fruits) {
     }
 })
 
+// Update
+Fruit.updateOne({ _id: "uniqueID" }, { name: "Peach" }, function (err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("Updated the document!");
+    }
+})
+
+// Delete
+Fruit.deleteOne({ name: "Peach" }, function (err) {
+    if (err) {
+        console.log(err)
+    } else {
+        console.log("Deleted the peach")
+    }
+})
+
 mongoose.connection.close()
