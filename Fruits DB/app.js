@@ -81,4 +81,33 @@ Fruit.deleteOne({ name: "Peach" }, function (err) {
     }
 })
 
+const personSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    favoriteFruit: {
+        type: fruitSchema,
+        required: true
+    }
+})
+
+const Person = mongoose.model("Person", personSchema);
+
+const pineapple = new Fruit({
+    name: "Pineapple",
+    rating: 9,
+    review: "So sharp and sweet"
+})
+
+pineapple.save()
+
+const person = new Person({
+    name: "Shelby",
+    age: 29,
+    favoriteFruit: pineapple
+})
+
+
+person.save()
+
+
 mongoose.connection.close()
