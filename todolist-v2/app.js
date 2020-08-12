@@ -38,10 +38,24 @@ const itemsSchema = mongoose.Schema({
 
 const Item = mongoose.model("Item", itemsSchema);
 
+const item1 = new Item({
+  name: "Welcome to your todo list!"
+})
+
+const item2 = new Item({
+  name: "Hit the + button to add new item!"
+})
+
+const item3 = new Item({
+  name: "<-- Hit that to remove item!"
+})
+
+const instructions = [item1, item2, item3]
 // mongoose.connection.close()
 
 // const items = ["Buy Food", "Cook Food", "Eat Food"];
 const workItems = [];
+
 
 app.get("/", function (req, res) {
 
@@ -49,15 +63,24 @@ app.get("/", function (req, res) {
 
   Item.find(function (err, foundItems) {
     if (err) {
-      console.log("Unable to find items due to " + err)
+      console.log("Unable to find items due to " + err);
     } else {
       // console.log(res)
-      foundItems.forEach(function (item) {
-        // items.push(item.name)
-        console.log(item.name)
 
-      })
-      res.render("list", { listTitle: day, newListItems: foundItems });
+      if (foundItems.length === 0) {
+        Item.insertMany(instructions, function (err) {
+          if (err) {
+            console.log("Unable to add instructions due to  ", err);
+          }
+        })
+        res.redirect("/")
+      } else {
+        foundItems.forEach(function (item) {
+          // items.push(item.name)
+          // console.log(item.name)
+        })
+        res.render("list", { listTitle: day, newListItems: foundItems });
+      }
     }
   })
 
