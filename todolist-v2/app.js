@@ -2,7 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const date = require(__dirname + "/date.js");
+// const date = require(__dirname + "/date.js");
 const mongoose = require("mongoose")
 require('dotenv').config();
 
@@ -62,7 +62,7 @@ const instructions = [item1, item2, item3]
 
 app.get("/", function (req, res) {
 
-  const day = date.getDate();
+  // const day = date.getDate();
 
   Item.find(function (err, foundItems) {
     if (err) {
@@ -82,7 +82,7 @@ app.get("/", function (req, res) {
           // items.push(item.name)
           // console.log(item.name)
         })
-        res.render("list", { listTitle: day, newListItems: foundItems });
+        res.render("list", { listTitle: "Today", newListItems: foundItems });
       }
     }
   })
@@ -116,19 +116,28 @@ app.get("/:customListName", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-
+  const listName = req.body.list;
   const item = new Item({
     name: req.body.newItem
   })
 
-  item.save(function (err) {
-    if (err) {
-      console.log("Unable to add item due to " + err);
-    } else {
-      console.log(item.name, "Added successfully")
-      res.redirect("/")
-    }
-  })
+  if (listName === "Today") {
+    item.save(function (err) {
+      if (err) {
+        console.log("Unable to add item due to " + err);
+      } else {
+        console.log(item.name, "Added successfully")
+        res.redirect("/")
+      }
+    })
+  } else {
+    List.findOne({ name: listName }, function (err, foundList) {
+      foundList.items.push(item);
+      foundList.save()
+      res.redirect("/" + listName);
+    })
+  }
+
 });
 
 app.post("/delete", function (req, res) {
