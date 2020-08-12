@@ -38,9 +38,6 @@ const itemsSchema = mongoose.Schema({
 
 const Item = mongoose.model("Item", itemsSchema);
 
-const items = []
-
-
 // mongoose.connection.close()
 
 // const items = ["Buy Food", "Cook Food", "Eat Food"];
@@ -50,20 +47,19 @@ app.get("/", function (req, res) {
 
   const day = date.getDate();
 
-  Item.find(function (err, res) {
+  Item.find(function (err, foundItems) {
     if (err) {
       console.log("Unable to find items due to " + err)
     } else {
       // console.log(res)
-      res.forEach(function (item) {
+      foundItems.forEach(function (item) {
         // items.push(item.name)
         console.log(item.name)
+
       })
+      res.render("list", { listTitle: day, newListItems: foundItems });
     }
   })
-
-  console.log(items)
-  res.render("list", { listTitle: day, newListItems: items });
 
 });
 
@@ -78,6 +74,7 @@ app.post("/", function (req, res) {
       console.log("Unable to add item due to " + err);
     } else {
       console.log(item.name, "Added successfully")
+      res.redirect("/")
     }
   })
   // if (req.body.list === "Work") {
@@ -87,7 +84,7 @@ app.post("/", function (req, res) {
   //   items.push(item);
   //   res.redirect("/");
   // }
-  res.redirect("/")
+
 });
 
 app.get("/work", function (req, res) {
