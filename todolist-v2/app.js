@@ -38,6 +38,13 @@ const itemsSchema = mongoose.Schema({
 
 const Item = mongoose.model("Item", itemsSchema);
 
+const listSchema = {
+  name: String,
+  items: [itemsSchema]
+}
+
+const List = mongoose.model("List", listSchema);
+
 const item1 = new Item({
   name: "Welcome to your todo list!"
 })
@@ -52,10 +59,6 @@ const item3 = new Item({
 
 const instructions = [item1, item2, item3]
 // mongoose.connection.close()
-
-// const items = ["Buy Food", "Cook Food", "Eat Food"];
-const workItems = [];
-
 
 app.get("/", function (req, res) {
 
@@ -86,6 +89,32 @@ app.get("/", function (req, res) {
 
 });
 
+app.get("/:customListName", function (req, res) {
+  const customListName = req.params.customListName;
+
+  List.findOne({ name: customListName }, function (err, foundList) {
+    if (err) {
+      console.log("Unable to add item due to " + err);
+    }
+
+    if (!foundList) {
+      const list = new List({
+        name: customListName,
+        items: instructions,
+      });
+
+      list.save()
+      res.redirect("/" + customListName);
+    } else {
+      console.log(customListName)
+      res.render("list", { listTitle: customListName, newListItems: foundList.items })
+    }
+
+
+  })
+
+});
+
 app.post("/", function (req, res) {
 
   const item = new Item({
@@ -103,7 +132,7 @@ app.post("/", function (req, res) {
 });
 
 app.post("/delete", function (req, res) {
-  console.log(req.body, req.body.checkbox)
+  // console.log(req.body, req.body.checkbox)
   Item.findByIdAndDelete(req.body.checkbox, function (err) {
     if (err) {
       console.log("Unable to delete item due to ", err);
@@ -114,10 +143,6 @@ app.post("/delete", function (req, res) {
 
   res.redirect("/")
 })
-
-app.get("/work", function (req, res) {
-  res.render("list", { listTitle: "Work List", newListItems: workItems });
-});
 
 app.get("/about", function (req, res) {
   res.render("about");
