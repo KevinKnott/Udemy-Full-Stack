@@ -15,7 +15,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true })
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}, function (err) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  } else {
+    console.log("DB connected");
+  }
+})
+
+const itemsSchema = mongoose.Schema({
+  item: {
+    type: String,
+    require: true,
+  }
+})
+
+const Item = mongoose.model("Item", itemsSchema);
+
+mongoose.connection.close()
+
 // const items = ["Buy Food", "Cook Food", "Eat Food"];
 // const workItems = [];
 
