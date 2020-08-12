@@ -100,15 +100,20 @@ app.post("/", function (req, res) {
       res.redirect("/")
     }
   })
-  // if (req.body.list === "Work") {
-  //   workItems.push(item);
-  //   res.redirect("/work");
-  // } else {
-  //   items.push(item);
-  //   res.redirect("/");
-  // }
-
 });
+
+app.post("/delete", function (req, res) {
+  // console.log(req.body, req.body.checkbox)
+  Item.deleteOne({ name: req.body.checkbox }, function (err) {
+    if (err) {
+      console.log("Unable to delete item due to ", err);
+    } else {
+      console.log("Deleted the item: ", req.body.name);
+    }
+  })
+
+  res.redirect("/")
+})
 
 app.get("/work", function (req, res) {
   res.render("list", { listTitle: "Work List", newListItems: workItems });
