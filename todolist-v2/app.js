@@ -103,8 +103,8 @@ app.post("/", function (req, res) {
 });
 
 app.post("/delete", function (req, res) {
-  // console.log(req.body, req.body.checkbox)
-  Item.deleteOne({ name: req.body.checkbox }, function (err) {
+  console.log(req.body, req.body.checkbox)
+  Item.findByIdAndDelete(req.body.checkbox, function (err) {
     if (err) {
       console.log("Unable to delete item due to ", err);
     } else {
