@@ -51,8 +51,6 @@ app.get("/", function (req, res) {
       console.log(err);
     }
   });
-
-
 });
 
 app.get("/about", function (req, res) {
@@ -68,12 +66,12 @@ app.get("/compose", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-  const post = {
+  const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody
-  };
+  });
 
-  posts.push(post);
+  post.save()
 
   res.redirect("/");
 
