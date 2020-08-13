@@ -106,7 +106,7 @@ app.get("/:customListName", function (req, res) {
       list.save()
       res.redirect("/" + customListName);
     } else {
-      console.log(customListName)
+      // console.log(customListName)
       res.render("list", { listTitle: customListName, newListItems: foundList.items })
     }
 
@@ -132,9 +132,14 @@ app.post("/", function (req, res) {
     })
   } else {
     List.findOne({ name: listName }, function (err, foundList) {
-      foundList.items.push(item);
-      foundList.save()
-      res.redirect("/" + listName);
+
+      if (err) {
+        console.log("Unable to find list due to " + err)
+      } {
+        foundList.items.push(item);
+        foundList.save()
+        res.redirect("/" + listName);
+      }
     })
   }
 
@@ -142,15 +147,28 @@ app.post("/", function (req, res) {
 
 app.post("/delete", function (req, res) {
   // console.log(req.body, req.body.checkbox)
-  Item.findByIdAndDelete(req.body.checkbox, function (err) {
-    if (err) {
-      console.log("Unable to delete item due to ", err);
-    } else {
-      console.log("Deleted the item: ", req.body.name);
-    }
-  })
+  const listName = req.body.list
+  if (listName === "Today") {
+    Item.findByIdAndDelete(req.body.checkbox, function (err) {
+      if (err) {
+        console.log("Unable to delete item due to ", err);
+      } else {
+        console.log("Deleted the item: ", req.body.name);
+      }
+    })
 
-  res.redirect("/")
+    res.redirect("/")
+  } else {
+    List.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: req.body.checkbox } } }, function (err, foundList) {
+      if (err) {
+        console.log("Unable to delete item in list due to ", err);
+      } else {
+        console.log("Deleted the item in ", listName, ": ", req.body.name);
+        res.redirect("/" + listName)
+      }
+    })
+  }
+
 })
 
 app.get("/about", function (req, res) {
