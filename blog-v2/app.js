@@ -78,9 +78,6 @@ app.post("/compose", function (req, res) {
       console.log("Unable to Save to db", err);
     }
   })
-
-
-
 });
 
 app.get("/posts/:postID", function (req, res) {
