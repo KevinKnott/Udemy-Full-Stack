@@ -26,6 +26,14 @@ mongoose.connect(uri, {
   }
 });
 
+// Create  Schema and Model
+
+const postSchema = mongoose.Schema({
+  title: String,
+  content: String,
+});
+
+const Post = mongoose.model("Post", postSchema);
 
 app.set('view engine', 'ejs');
 
@@ -35,6 +43,8 @@ app.use(express.static("public"));
 let posts = [];
 
 app.get("/", function (req, res) {
+
+
   res.render("home", {
     startingContent: homeStartingContent,
     posts: posts
