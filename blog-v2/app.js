@@ -40,15 +40,19 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let posts = [];
-
 app.get("/", function (req, res) {
-
-
-  res.render("home", {
-    startingContent: homeStartingContent,
-    posts: posts
+  Post.find(function (err, foundPosts) {
+    if (!err) {
+      res.render("home", {
+        startingContent: homeStartingContent,
+        posts: foundPosts
+      });
+    } else {
+      console.log(err);
+    }
   });
+
+
 });
 
 app.get("/about", function (req, res) {
