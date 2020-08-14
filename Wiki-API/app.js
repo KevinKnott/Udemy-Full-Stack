@@ -35,9 +35,14 @@ const Article = mongoose.model("Article", articleSchema);
 
 // Since this is for a REST api we will follow standards
 
+// Get the main page
+app.get("/", function (req, res) {
+
+})
+
 // GET all Articles
 // endpoint/articles
-app.get("/", function (req, res) {
+app.get("/articles", function (req, res) {
     Article.find(function (err, foundArticles) {
         if (!err) {
             foundArticles.forEach(function (article) {
@@ -49,6 +54,19 @@ app.get("/", function (req, res) {
 
 // Post a new article
 // endpoint/articles
+app.post("/articles", function (req, res) {
+    // get post info
+    const article = new Article({
+        title: "",
+        content: "",
+    })
+
+    article.save(function (err) {
+        if (err) {
+            console.log("Unable to add ", article.title, "to db ", err);
+        }
+    })
+})
 
 // Delete all articles
 // endpoint/
