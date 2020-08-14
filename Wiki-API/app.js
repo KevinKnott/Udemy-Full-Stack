@@ -25,12 +25,13 @@ mongoose.connect(uri, {
 })
 
 // Mongoose Create Schema
-const article = new mongoose.Schema({
+const articleSchema = new mongoose.Schema({
     title: String,
     article: String,
 });
 
 // Mongoose use Model
+const Article = mongoose.model("Article", articleSchema);
 
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
