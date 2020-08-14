@@ -27,11 +27,46 @@ mongoose.connect(uri, {
 // Mongoose Create Schema
 const articleSchema = new mongoose.Schema({
     title: String,
-    article: String,
+    content: String,
 });
 
 // Mongoose use Model
 const Article = mongoose.model("Article", articleSchema);
+
+// Since this is for a REST api we will follow standards
+
+// GET all Articles
+// endpoint/articles
+app.get("/", function (req, res) {
+    Article.find(function (err, foundArticles) {
+        if (!err) {
+            foundArticles.forEach(function (article) {
+                console.log("Article", article.title, article.content);
+            })
+        }
+    })
+})
+
+// Post a new article
+// endpoint/articles
+
+// Delete all articles
+// endpoint/
+
+// GET a specific article
+// endpoint/article/:id
+
+// Put a Specific article (updated with replacement)
+// endpoint/article/:id
+
+// Patch a specific article (update current found article)
+// endpoint/article/:id
+
+// Delete a specific article
+// endpoint/article/:id
+
+
+
 
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
