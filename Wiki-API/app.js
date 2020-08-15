@@ -4,6 +4,7 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const { stringify } = require('querystring');
 const _ = require("lodash");
+const e = require('express');
 require('dotenv').config();
 
 const app = express();
@@ -102,10 +103,15 @@ app.route("/articles/:articleTitle")
     // endpoint/article/:id
     .get(function (req, res) {
         articleTitle = req.params.articleTitle
-        console.log(articleTitle)
+        // console.log(articleTitle)
         Article.findOne({ title: articleTitle }, function (err, article) {
             if (!err) {
-                res.send(article)
+                if (article == null) {
+                    console.log("Couldnt find a matching article");
+                    res.send("No article found with title " + articleTitle)
+                } else {
+                    res.send(article)
+                }
             } else {
                 console.log("Couldnt find article", err);
                 res.send(err)
