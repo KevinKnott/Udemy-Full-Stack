@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const { stringify } = require('querystring');
+const _ = require("lodash");
 require('dotenv').config();
 
 const app = express();
@@ -35,65 +36,82 @@ const Article = mongoose.model("Article", articleSchema);
 
 // Since this is for a REST api we will follow standards
 
+
 // Get the main page
 app.get("/", function (req, res) {
-
+    res.send("Invalid page please request articles");
 })
 
-// GET all Articles
-// endpoint/articles
-app.get("/articles", function (req, res) {
-    Article.find(function (err, foundArticles) {
-        if (!err) {
-            foundArticles.forEach(function (article) {
-                console.log("Article", article.title, article.content);
-            })
 
-            res.send(foundArticles);
-        } else {
-            res.send(err)
-        }
-    })
-})
+app.route("/articles")
+    // GET all Articles
+    // endpoint/articles
+    .get(function (req, res) {
+        Article.find(function (err, foundArticles) {
+            if (!err) {
+                foundArticles.forEach(function (article) {
+                    // console.log("Article: ", article.title, article.content);
+                })
 
-// Post a new article
-// endpoint/articles
-app.post("/articles", function (req, res) {
-    // get post info
-    const article = new Article({
-        title: req.body.title,
-        content: req.body.content,
-    })
-    // console.log(article, req.body)
-
-    article.save(function (err) {
-        if (err) {
-            console.log("Unable to add ", article.title, "to db ", err);
-            res.send(err)
-        } else {
-            res.send("Article added successfully")
-        }
+                res.send(foundArticles);
+            } else {
+                res.send(err)
+            }
+        })
     })
 
+    // Post a new article
+    // endpoint/articles
+    .post(function (req, res) {
+        // get post info
+        const article = new Article({
+            title: req.body.title,
+            content: req.body.content,
+        })
+        // console.log(article, req.body)
 
-})
+        article.save(function (err) {
+            if (err) {
+                console.log("Unable to add ", article.title, "to db ", err);
+                res.send(err)
+            } else {
+                res.send("Article added successfully")
+            }
+        })
 
-// Delete all articles
-// endpoint/
-app.delete("/articles", function (req, res) {
 
-    Article.deleteMany(function (err) {
-        if (!err) {
-            res.send("Deleted all articles")
-        } else {
-            console.log("Unable to delete all articles ", err);
-            res.send(err)
-        }
     })
-})
 
-// GET a specific article
-// endpoint/article/:id
+    // Delete all articles
+    // endpoint/
+    .delete(function (req, res) {
+
+        Article.deleteMany(function (err) {
+            if (!err) {
+                res.send("Deleted all articles")
+            } else {
+                console.log("Unable to delete all articles ", err);
+                res.send(err)
+            }
+        })
+    })
+
+
+app.route("/articles/:articleTitle")
+    // GET a specific article
+    // endpoint/article/:id
+    .get(function (req, res) {
+        articleTitle = req.params.articleTitle
+        console.log(articleTitle)
+        Article.findOne({ title: articleTitle }, function (err, article) {
+            if (!err) {
+                res.send(article)
+            } else {
+                console.log("Couldnt find article", err);
+                res.send(err)
+            }
+        })
+    })
 
 // Put a Specific article (updated with replacement)
 // endpoint/article/:id
