@@ -48,6 +48,10 @@ app.get("/articles", function (req, res) {
             foundArticles.forEach(function (article) {
                 console.log("Article", article.title, article.content);
             })
+
+            res.send(foundArticles);
+        } else {
+            res.send(err)
         }
     })
 })
@@ -57,19 +61,36 @@ app.get("/articles", function (req, res) {
 app.post("/articles", function (req, res) {
     // get post info
     const article = new Article({
-        title: "",
-        content: "",
+        title: req.body.title,
+        content: req.body.content,
     })
+    // console.log(article, req.body)
 
     article.save(function (err) {
         if (err) {
             console.log("Unable to add ", article.title, "to db ", err);
+            res.send(err)
+        } else {
+            res.send("Article added successfully")
         }
     })
+
+
 })
 
 // Delete all articles
 // endpoint/
+app.delete("/articles", function (req, res) {
+
+    Article.deleteMany(function (err) {
+        if (!err) {
+            res.send("Deleted all articles")
+        } else {
+            console.log("Unable to delete all articles ", err);
+            res.send(err)
+        }
+    })
+})
 
 // GET a specific article
 // endpoint/article/:id
