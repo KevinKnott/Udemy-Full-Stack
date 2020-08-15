@@ -119,8 +119,27 @@ app.route("/articles/:articleTitle")
         })
     })
 
-// Put a Specific article (updated with replacement)
-// endpoint/article/:id
+    // Put a Specific article (updated with replacement)
+    // endpoint/article/:id
+    .put(function (req, res) {
+        console.log(req.body, req.params.articleTitle);
+        if (_.isEmpty(req.body)) {
+            res.send("Unable to update with empty body")
+        } else {
+            Article.update(
+                { title: req.params.articleTitle },
+                req.body,
+                { overwrite: true },
+                function (err) {
+                    if (!err) {
+                        res.send("Successfully updated the article");
+                    } else {
+                        res.send(err)
+                    }
+                })
+        }
+
+    })
 
 // Patch a specific article (update current found article)
 // endpoint/article/:id
