@@ -59,7 +59,8 @@ app.post("/login", function (req, res) {
 
     User.findOne({ email: req.body.username }, function (err, foundUser) {
         if (!err) {
-            if (foundUser == null) {
+            if (!foundUser) {
+                // console.log("No results");
                 res.redirect("login");
             } else {
                 if (req.body.password === foundUser.password) {
