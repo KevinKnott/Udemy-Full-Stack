@@ -55,8 +55,43 @@ app.get("/login", function (req, res) {
     res.render("login", {});
 })
 
+app.post("/login", function (req, res) {
+
+    User.findOne({ email: req.body.username }, function (err, foundUser) {
+        if (!err) {
+            if (foundUser == null) {
+                res.redirect("login");
+            } else {
+                if (req.body.password === foundUser.password) {
+                    res.render("secrets");
+                } else {
+                    res.redirect("login");
+                }
+            }
+
+        } else {
+            res.redirect("login");
+        }
+    })
+})
+
 app.get("/register", function (req, res) {
     res.render("register", {});
+})
+
+app.post("/register", function (req, res) {
+    const newUser = new User({
+        email: req.body.username,
+        password: req.body.password,
+    })
+
+    newUser.save(function (err) {
+        if (!err) {
+            res.render("secrets")
+        } else {
+            console.log(err)
+        }
+    })
 })
 
 
