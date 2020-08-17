@@ -3,8 +3,8 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const ejs = require("ejs");
 const mongoose = require('mongoose');
-const encrypt = require('mongoose-encryption');
-
+// const encrypt = require('mongoose-encryption');
+const md5 = require('md5');
 
 const app = express()
 
@@ -46,10 +46,9 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-const secret = process.env.ENCRYPTION_KEY
 
 // Use encryption - MUST BE DONE BEFORE THE MODEL IS CREATED
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password'] });
+// userSchema.plugin(encrypt, { secret: process.env.ENCRYPTION_KEY, encryptedFields: ['password'] });
 
 // Create a model to use
 const User = mongoose.model("User", userSchema)
@@ -70,7 +69,7 @@ app.post("/login", function (req, res) {
                 // console.log("No results");
                 res.redirect("login");
             } else {
-                if (req.body.password === foundUser.password) {
+                if (md5(req.body.password) === foundUser.password) {
                     res.render("secrets");
                 } else {
                     res.redirect("login");
@@ -90,7 +89,7 @@ app.get("/register", function (req, res) {
 app.post("/register", function (req, res) {
     const newUser = new User({
         email: req.body.username,
-        password: req.body.password,
+        password: md5(req.body.password),
     })
 
     newUser.save(function (err) {
