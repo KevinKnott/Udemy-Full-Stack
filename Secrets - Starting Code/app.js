@@ -11,6 +11,7 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const SpotifyStrategy = require('passport-spotify').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 
 const app = express()
@@ -61,6 +62,7 @@ const userSchema = new mongoose.Schema({
         required: false,
     },
     googleId: String,
+    spotifyId: String,
 })
 
 
@@ -77,22 +79,61 @@ passport.use(User.createStrategy());
 passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
+
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
         done(err, user);
-    })
+    });
 });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 }, function (accessToken, refreshToken, profile, cb) {
-    // console.log(profile)
+    // console.log(profile.id)
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
         return cb(err, user);
     });
+}
+));
+
+passport.use(new SpotifyStrategy({
+    clientID: process.env.SPOTIFY_CLIENT_ID,
+    clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/spotify/secrets",
+}, function (accessToken, refreshToken, expires_in, profile, done) {
+    // console.log(profile.id)
+
+    User.findOne({ spotifyId: profile.id }, function (err, foundUser) {
+        if (err) {
+            return done(err)
+        } else {
+            if (!foundUser) {
+                foundUser = new User({
+                    spotifyId: profile.id,
+                })
+
+                console.log(foundUser)
+                foundUser.save(function (err) {
+                    if (err) {
+                        return done(err)
+                    } else {
+                        return done(err, foundUser)
+                    }
+                })
+            } else {
+                // console.log("Yo")
+                return done(err, foundUser)
+            }
+        }
+    })
+
+    // User.findOrCreate({ spotifyId: profile.id }, function (err, user) {
+    //     console.log("User was added", user)
+    //     return done(err, user);
+    // })
 }
 ));
 
@@ -105,7 +146,18 @@ app.get("/auth/google",
 );
 
 app.get("/auth/google/secrets",
-    passport.authenticate('google', { failureRedirect: 'login' }),
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect("/secrets")
+    }
+)
+
+app.get("/auth/spotify",
+    passport.authenticate('spotify')
+);
+
+app.get("/auth/spotify/secrets",
+    passport.authenticate('spotify', { failureRedirect: '/login' }),
     function (req, res) {
         res.redirect("/secrets")
     }
