@@ -13,6 +13,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const SpotifyStrategy = require('passport-spotify').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
+const e = require("express");
 
 const app = express()
 
@@ -63,6 +64,7 @@ const userSchema = new mongoose.Schema({
     },
     googleId: String,
     spotifyId: String,
+    secret: String,
 })
 
 
@@ -255,7 +257,32 @@ app.post("/register", function (req, res) {
     // });
 })
 
+app.get("/submit", function (req, res) {
+    if (req.isAuthenticated()) {
+        res.render("submit");
+    } else {
+        res.redirect("login");
+    }
+})
 
+app.post("/submit", function (req, res) {
+    const submittedSecret = req.body.secret;
+
+    console.log(req.user.id)
+
+    User.findById(req.user.id, function (err, foundUser) {
+        if (err) {
+            console.log(err)
+        } else {
+            if (foundUser) {
+                foundUser.secret = submittedSecret;
+                foundUser.save(function () {
+                    res.redirect("/secrets")
+                })
+            }
+        }
+    })
+})
 
 app.listen(process.env.PORT || 3000, function () {
     console.log("Server started");
