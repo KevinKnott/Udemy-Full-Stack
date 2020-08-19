@@ -6,12 +6,14 @@ Import ReactDOM from "React-dom";
 
 This allows us to use React.
 
+Also please note that Babel is used as a way to write our code in all the possible versions so that all browsers can handle the JSX.
+
 Once that is done we can use ReactDom to help re render HTML:
 
 //Create a react app from scratch.
 
 ReactDOM takes two things:
-    1. What to place
+    1. What to place (Please note you can only add one thing)
     2. Where to place it
 
 ReactDOM.render(
@@ -28,3 +30,18 @@ ReactDOM.render(
 //It should display a h1 heading.
 //It should display an unordered list (bullet points).
 //It should contain 3 list elements.
+
+
+In order to use JavaScript within React JSX we need to use {} to wrap the variable/code we need to use
+
+const name = "Kevin";
+var number = Math.random() * 100;
+number = Math.floor(number) + 1;
+
+ReactDOM.render(
+  <div>
+    <h1>Hello {name}!</h1>
+    <p>Your lucky number is {number}</p>
+  </div>,
+  document.getElementById("root")
+);
