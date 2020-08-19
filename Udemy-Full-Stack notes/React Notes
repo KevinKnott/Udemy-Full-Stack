@@ -1,0 +1,30 @@
+In order to use React we will start by using codesandbox.io
+
+To begin we need to:
+Import React from "React";
+Import ReactDOM from "React-dom";
+
+This allows us to use React.
+
+Once that is done we can use ReactDom to help re render HTML:
+
+//Create a react app from scratch.
+
+ReactDOM takes two things:
+    1. What to place
+    2. Where to place it
+
+ReactDOM.render(
+  <div>
+    <h1>My Favourite Foods</h1>
+    <ul>
+      <li>Steak</li>
+      <li>Nachos</li>
+      <li>Chicken</li>
+    </ul>
+  </div>,
+  document.getElementById("root")
+);
+//It should display a h1 heading.
+//It should display an unordered list (bullet points).
+//It should contain 3 list elements.
