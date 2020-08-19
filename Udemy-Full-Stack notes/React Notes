@@ -32,16 +32,46 @@ ReactDOM.render(
 //It should contain 3 list elements.
 
 
-In order to use JavaScript within React JSX we need to use {} to wrap the variable/code we need to use
+In order to use JavaScript within React JSX we need to use {} to wrap the variable/expressions we need to use
 
-const name = "Kevin";
+const fname = "Kevin";
+const lname = "Knott";
 var number = Math.random() * 100;
 number = Math.floor(number) + 1;
 
 ReactDOM.render(
   <div>
-    <h1>Hello {name}!</h1>
+    <h1>
+      Hello {fname} {lname}!
+    </h1>
     <p>Your lucky number is {number}</p>
   </div>,
   document.getElementById("root")
 );
+
+
+Another example here:
+
+//Create a react app from scratch.
+import React from "react";
+import ReactDOM from "react-dom";
+
+const year = new Date().getFullYear();
+const fname = "Kevin";
+const lname = "Knott";
+
+//It should display 2 paragraph HTML elements.
+ReactDOM.render(
+  <div>
+    <p>Created by {fname + " " + lname}</p>
+    <p>Copyright {year}</p>
+  </div>,
+  document.getElementById("root")
+);
+
+//The paragraphs should say:
+//Created by YOURNAME.
+//Copyright CURRENTYEAR.
+//E.g.
+//Created by Angela Yu.
+//Copyright 2019.
