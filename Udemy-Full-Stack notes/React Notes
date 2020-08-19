@@ -75,3 +75,51 @@ ReactDOM.render(
 //E.g.
 //Created by Angela Yu.
 //Copyright 2019.
+
+
+How to Style React:
+
+You can use basic styling from CSS however JSX handles all global attributes by using specific casing:
+
+class => className
+contenteditable => contentEditable
+
+ReactDOM.render(
+  <div>
+    <h1 className="heading" contentEditable="True" spellCheck="false">
+      My Favourite Foods
+    </h1>
+    <div>
+      <img
+        className="ourImages"
+        src={
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Made20bacon.png/220px-Made20bacon.png"
+        }
+        alt="bacon"
+      />
+      <img
+        className="ourImages"
+        src={"https://i5.walmartimages.ca/images/Enlarge/580/6_r/875806_R.jpg"}
+        alt=" banana"
+      />
+      <img
+        className="ourImages"
+        src={
+          "https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg"
+        }
+        alt="cookie"
+      />
+    </div>
+  </div>,
+  document.getElementById("root")
+);
+
+So in our CSS we can change normal styles like shown below
+.heading {
+  color: red;
+}
+
+.ourImages {
+  height: 100px;
+  width: 100px;
+}
