@@ -123,3 +123,19 @@ So in our CSS we can change normal styles like shown below
   height: 100px;
   width: 100px;
 }
+
+
+You can also change styles using inline style, this gives us an adavantage as we can update the object on the fly
+
+const customStyle = {
+  color: "red",
+  fontSize: "20px",
+  border: "1px solid black"
+};
+
+customStyle.color = "pink";
+
+ReactDOM.render(
+  <h1 style={customStyle}>Hello World!</h1>,
+  document.getElementById("root")
+);
