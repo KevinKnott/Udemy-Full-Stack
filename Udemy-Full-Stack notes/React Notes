@@ -1,0 +1,235 @@
+In order to use React we will start by using codesandbox.io
+
+To begin we need to:
+Import React from "React";
+Import ReactDOM from "React-dom";
+
+This allows us to use React.
+
+Also please note that Babel is used as a way to write our code in all the possible versions so that all browsers can handle the JSX.
+
+Once that is done we can use ReactDom to help re render HTML:
+
+//Create a react app from scratch.
+
+ReactDOM takes two things:
+    1. What to place (Please note you can only add one thing)
+    2. Where to place it
+
+ReactDOM.render(
+  <div>
+    <h1>My Favourite Foods</h1>
+    <ul>
+      <li>Steak</li>
+      <li>Nachos</li>
+      <li>Chicken</li>
+    </ul>
+  </div>,
+  document.getElementById("root")
+);
+//It should display a h1 heading.
+//It should display an unordered list (bullet points).
+//It should contain 3 list elements.
+
+
+In order to use JavaScript within React JSX we need to use {} to wrap the variable/expressions we need to use
+
+const fname = "Kevin";
+const lname = "Knott";
+var number = Math.random() * 100;
+number = Math.floor(number) + 1;
+
+ReactDOM.render(
+  <div>
+    <h1>
+      Hello {fname} {lname}!
+    </h1>
+    <p>Your lucky number is {number}</p>
+  </div>,
+  document.getElementById("root")
+);
+
+
+Another example here:
+
+//Create a react app from scratch.
+import React from "react";
+import ReactDOM from "react-dom";
+
+const year = new Date().getFullYear();
+const fname = "Kevin";
+const lname = "Knott";
+
+//It should display 2 paragraph HTML elements.
+ReactDOM.render(
+  <div>
+    <p>Created by {fname + " " + lname}</p>
+    <p>Copyright {year}</p>
+  </div>,
+  document.getElementById("root")
+);
+
+//The paragraphs should say:
+//Created by YOURNAME.
+//Copyright CURRENTYEAR.
+//E.g.
+//Created by Angela Yu.
+//Copyright 2019.
+
+
+How to Style React:
+
+You can use basic styling from CSS however JSX handles all global attributes by using specific casing:
+
+class => className
+contenteditable => contentEditable
+
+ReactDOM.render(
+  <div>
+    <h1 className="heading" contentEditable="True" spellCheck="false">
+      My Favourite Foods
+    </h1>
+    <div>
+      <img
+        className="ourImages"
+        src={
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Made20bacon.png/220px-Made20bacon.png"
+        }
+        alt="bacon"
+      />
+      <img
+        className="ourImages"
+        src={"https://i5.walmartimages.ca/images/Enlarge/580/6_r/875806_R.jpg"}
+        alt=" banana"
+      />
+      <img
+        className="ourImages"
+        src={
+          "https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg"
+        }
+        alt="cookie"
+      />
+    </div>
+  </div>,
+  document.getElementById("root")
+);
+
+So in our CSS we can change normal styles like shown below
+.heading {
+  color: red;
+}
+
+.ourImages {
+  height: 100px;
+  width: 100px;
+}
+
+
+You can also change styles using inline style, this gives us an adavantage as we can update the object on the fly
+
+const customStyle = {
+  color: "red",
+  fontSize: "20px",
+  border: "1px solid black"
+};
+
+customStyle.color = "pink";
+
+ReactDOM.render(
+  <h1 style={customStyle}>Hello World!</h1>,
+  document.getElementById("root")
+);
+
+
+More practice:
+
+let greeting;
+const currentHour = new Date().getHours();
+const ourStyle = { color: "" };
+console.log(currentHour);
+
+//Show a single h1 that says "Good morning" if between midnight and 12PM.
+if (currentHour >= 0 && currentHour < 12) {
+  greeting = "Good morning";
+  ourStyle.color = "red";
+}
+//or "Good Afternoon" if between 12PM and 6PM.
+else if (currentHour >= 12 && currentHour < 18) {
+  greeting = "Good afternoon";
+  ourStyle.color = "green";
+}
+//or "Good evening" if between 6PM and midnight.
+else {
+  greeting = "Good evening";
+  ourStyle.color = "red";
+}
+
+//Apply the "heading" style in the styles.css
+//Dynamically change the color of the h1 using inline css styles.
+//Morning = red, Afternoon = green, Night = blue.
+
+ReactDOM.render(
+  <div>
+    <h1 className="heading" style={ourStyle}>
+      {greeting}
+    </h1>
+  </div>,
+  document.getElementById("root")
+);
+
+
+Components!
+
+Up to now we have been adding everything directly to the index.js which is not best practice. You want to create components that are self contained that you import so that your index.js 
+is super simple
+
+index.js:
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+Heading:
+import React from "react";
+
+function Heading() {
+  return <h1>My Favourite Foods</h1>;
+}
+
+export default Heading;
+
+List:
+import React from "react";
+
+function List() {
+  return (
+    <ul>
+      <li>Bacon</li>
+      <li>Jamon</li>
+      <li>Noodles</li>
+    </ul>
+  );
+}
+
+export default List;
+
+App:
+import React from "react";
+import Heading from "./Heading";
+import List from "./List";
+
+function App() {
+  return (
+    <div>
+      <Heading />
+      <List />
+    </div>
+  );
+}
+
+export default App;
+
+
+As you can see by creating a self contained JSX file we can add in components and export functions that return JSX. Please note you can run any specialized
+JS within these files or by using JS files and importing them.
