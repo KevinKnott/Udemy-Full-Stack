@@ -233,3 +233,46 @@ export default App;
 
 As you can see by creating a self contained JSX file we can add in components and export functions that return JSX. Please note you can run any specialized
 JS within these files or by using JS files and importing them.
+
+React Props:
+
+You can pass information to a component using properties. To use them you would add an attribute and give them a value.
+Once they are passed you can access them through the props object. See below for an example
+
+function Card(props) {
+  console.log(props);
+  return (
+    <div>
+      <h2>{props.name}</h2>
+      <img src={props.img} alt="avatar_img" />
+      <p>{props.tel}</p>
+      <p>{props.email}</p>
+    </div>
+  );
+}
+ReactDOM.render(
+  <div>
+    <h1>My Contacts</h1>
+
+    <Card
+      // Cant use className here
+      name="Beyonce"
+      img="https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg"
+      tel="+123 456 789"
+      email="b@beyonce.com"
+    />
+    <Card
+      name="Jack Bauer"
+      img="https://pbs.twimg.com/profile_images/625247595825246208/X3XLea04_400x400.jpg"
+      tel="+987 654 321"
+      email="jack@nowhere.com"
+    />
+    <Card
+      name="Chuck Norris"
+      img="https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png"
+      tel="+918 372 574"
+      email="gmail@chucknorris.com"
+    />
+  </div>,
+  document.getElementById("root")
+);
