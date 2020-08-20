@@ -139,3 +139,40 @@ ReactDOM.render(
   <h1 style={customStyle}>Hello World!</h1>,
   document.getElementById("root")
 );
+
+
+More practice:
+
+let greeting;
+const currentHour = new Date().getHours();
+const ourStyle = { color: "" };
+console.log(currentHour);
+
+//Show a single h1 that says "Good morning" if between midnight and 12PM.
+if (currentHour >= 0 && currentHour < 12) {
+  greeting = "Good morning";
+  ourStyle.color = "red";
+}
+//or "Good Afternoon" if between 12PM and 6PM.
+else if (currentHour >= 12 && currentHour < 18) {
+  greeting = "Good afternoon";
+  ourStyle.color = "green";
+}
+//or "Good evening" if between 6PM and midnight.
+else {
+  greeting = "Good evening";
+  ourStyle.color = "red";
+}
+
+//Apply the "heading" style in the styles.css
+//Dynamically change the color of the h1 using inline css styles.
+//Morning = red, Afternoon = green, Night = blue.
+
+ReactDOM.render(
+  <div>
+    <h1 className="heading" style={ourStyle}>
+      {greeting}
+    </h1>
+  </div>,
+  document.getElementById("root")
+);
