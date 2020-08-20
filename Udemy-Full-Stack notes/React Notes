@@ -176,3 +176,60 @@ ReactDOM.render(
   </div>,
   document.getElementById("root")
 );
+
+
+Components!
+
+Up to now we have been adding everything directly to the index.js which is not best practice. You want to create components that are self contained that you import so that your index.js 
+is super simple
+
+index.js:
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+
+Heading:
+import React from "react";
+
+function Heading() {
+  return <h1>My Favourite Foods</h1>;
+}
+
+export default Heading;
+
+List:
+import React from "react";
+
+function List() {
+  return (
+    <ul>
+      <li>Bacon</li>
+      <li>Jamon</li>
+      <li>Noodles</li>
+    </ul>
+  );
+}
+
+export default List;
+
+App:
+import React from "react";
+import Heading from "./Heading";
+import List from "./List";
+
+function App() {
+  return (
+    <div>
+      <Heading />
+      <List />
+    </div>
+  );
+}
+
+export default App;
+
+
+As you can see by creating a self contained JSX file we can add in components and export functions that return JSX. Please note you can run any specialized
+JS within these files or by using JS files and importing them.
