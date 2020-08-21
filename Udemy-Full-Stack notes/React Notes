@@ -431,3 +431,22 @@ const foundIndexOfFirstGreaterThanTen = numbers.findIndex(function (num) {
 
 console.log(foundIndexOfFirstGreaterThanTen);
 
+import emojipedia from "./emojipedia";
+
+const truncDefinition = emojipedia.map( function (emojiTerm) {
+  return emojiTerm.meaning.substr(0, 100);
+});
+
+console.log(truncDefinition);
+
+A whole new world of Anon functions
+Instead of using a callback function that is anonymous by saying function we can simply use the arrow function.
+So basically if I take the emojipedia example you can update it to the following:
+
+import emojipedia from "./emojipedia";
+
+const truncDefinition = emojipedia.map((emojiTerm) => {
+  return emojiTerm.meaning.substr(0, 100);
+});
+
+console.log(truncDefinition);
