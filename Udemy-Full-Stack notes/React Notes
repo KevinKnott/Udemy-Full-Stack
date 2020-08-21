@@ -449,4 +449,6 @@ const truncDefinition = emojipedia.map((emojiTerm) => {
   return emojiTerm.meaning.substr(0, 100);
 });
 
+const square = numbers.map( x => x * x);
+
 console.log(truncDefinition);
