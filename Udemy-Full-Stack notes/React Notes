@@ -385,3 +385,49 @@ function Entry(props) {
 
 export default Entry;
 
+Map/Filter/Reduce:
+
+var numbers = [3, 56, 2, 48, 5];
+
+//Map -Create a new array by doing something with each item in an array.
+// The advantage over foreach or for loops is that a map always returns an array
+// so it is more concise
+function double(x) {
+  return x * 2;
+}
+
+const newNums = numbers.map(double);
+
+const altNums = numbers.map(function (x) {
+  return x * 2;
+});
+console.log(newNums, altNums);
+
+//Filter - Create a new array by keeping the items that return true.
+const numGreaterThanTen = numbers.filter(function (num) {
+  return num > 10;
+});
+
+console.log(numGreaterThanTen);
+
+//Reduce - Accumulate a value by doing something to each item in an array.
+const sum = numbers.reduce(function (accumulator, current) {
+  return (accumulator += current);
+});
+
+console.log(sum);
+
+//Find - find the first item that matches from an array.
+const foundNumGreaterThanTen = numbers.find(function (num) {
+  return num > 10;
+});
+
+console.log(foundNumGreaterThanTen);
+
+//FindIndex - find the index of the first item that matches.
+const foundIndexOfFirstGreaterThanTen = numbers.findIndex(function (num) {
+  return num > 10;
+});
+
+console.log(foundIndexOfFirstGreaterThanTen);
+
