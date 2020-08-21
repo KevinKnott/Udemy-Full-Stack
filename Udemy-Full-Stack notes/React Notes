@@ -276,3 +276,61 @@ ReactDOM.render(
   </div>,
   document.getElementById("root")
 );
+
+Map function
+
+It is basically a foreach loop that lets you pass info from a object to map to a function to handle events
+Please note that you have to have a unique key for every element used within MAP to follow reacts rules 
+Key is special and shouldn't be accessed unless you create another prop name for it
+
+import React from "react";
+import Card from "./Card";
+import contacts from "../contacts";
+
+function createCard(contact) {
+  return (
+    <Card
+      id={contact.id}
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1 className="heading">My Contacts</h1>
+      {contacts.map(createCard)}
+
+    </div>
+  );
+}
+
+export default App;
+
+
+import React from "react";
+import Avatar from "./Avatar";
+import Detail from "./Detail";
+
+function Card(props) {
+  return (
+    <div className="card">
+      <div className="top">
+        <p>{props.id}</p>
+        <h2 className="name">{props.name}</h2>
+        <Avatar img={props.img} />
+      </div>
+      <div className="bottom">
+        <Detail detailInfo={props.tel} />
+        <Detail detailInfo={props.email} />
+      </div>
+    </div>
+  );
+}
+
+export default Card;
