@@ -479,3 +479,43 @@ More Examples:
     {props.isNotRegistered ? "Register" : "Login"}
   </button>
 </form>
+
+
+Declaritive vs Imperative
+
+In JavaScript there are two main ways of designing code:
+Declaritive in which you render components by using inbuilt variables and are told to render based on that variable
+Imperative in which you use functions and built out methods (document model) to render what you need
+
+Please refer to  https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2 as my definition is not as clear
+
+This becomes an issue as you start to need to rerender websites for instance in the example below I am simply wanting to
+increase the counter when the button is pressed. So you might do the following 
+
+let count = 0;
+
+function increase() {
+  count++;
+}
+
+ReactDOM.render(
+  <div className="container">
+    <h1>{count}</h1>
+    <button onClick={increase}>+</button>
+  </div>,
+  document.getElementById("root")
+);
+
+However this will not work as you are only rendering the page once. Technically you could call ReactDOM.render again
+but it will add a lot of extra bloat to your server.
+
+To solve this we can use Hooks 
+
+
+
+
+Destructuring
+
+You can map the variables to destructure 
+const [red, green, blue] = [9, 123, 227]
+console.log(red, green, blue);
