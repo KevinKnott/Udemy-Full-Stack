@@ -512,6 +512,35 @@ but it will add a lot of extra bloat to your server.
 To solve this we can use Hooks 
 
 
+import React, { useState } from "react";
+
+function App() {
+  // Use state method takes two parameters the initialValue and the function to update the value
+  const [count, setCount] = useState(0);
+  // console.log(count);
+
+  function increase() {
+    // Dont ever do this if you are using state
+    // You must update with a hook
+    // count++;
+    // console.log(count);
+
+    setCount(count + 1);
+  }
+
+  function decrease() {
+    setCount(count - 1);
+  }
+  return (
+    <div className="container">
+      <h1>{count}</h1>
+      <button onClick={increase}>+</button>
+      <button onClick={decrease}>-</button>
+    </div>
+  );
+}
+
+export default App;
 
 
 Destructuring
