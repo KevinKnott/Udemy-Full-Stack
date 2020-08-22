@@ -466,3 +466,16 @@ You can also use the && do do something similiar if you don't want something to 
 would become the following because the first statment is true the second will be executed. If it is false
 the if statement will be short circuited 
 {currentTime.getHours() > 12 && <h1>Why are you still working?</h1>}
+
+
+More Examples:
+<form className="form">
+  <input type="text" placeholder="Username" />
+  <input type="password" placeholder="Password" />
+  {props.isNotRegistered && (
+    <input type="password" placeholder="Confirm Password" />
+  )}
+  <button type="submit">
+    {props.isNotRegistered ? "Register" : "Login"}
+  </button>
+</form>
