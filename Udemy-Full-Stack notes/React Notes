@@ -452,3 +452,10 @@ const truncDefinition = emojipedia.map((emojiTerm) => {
 const square = numbers.map( x => x * x);
 
 console.log(truncDefinition);
+
+To optionally render we can use a ternary operator within the JSX
+
+For example to show something if we are logged in we could do the following
+It follows the form: condition ? true return : false return
+
+{isLoggedIn ? <h1>Hello</h1> : <Login />
