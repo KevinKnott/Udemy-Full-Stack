@@ -459,3 +459,10 @@ For example to show something if we are logged in we could do the following
 It follows the form: condition ? true return : false return
 
 {isLoggedIn ? <h1>Hello</h1> : <Login />
+
+You can also use the && do do something similiar if you don't want something to happen in a false case:
+{currentTime.getHours() > 12 ? <h1>Why are you still working?</h1> : null}
+
+would become the following because the first statment is true the second will be executed. If it is false
+the if statement will be short circuited 
+{currentTime.getHours() > 12 && <h1>Why are you still working?</h1>}
