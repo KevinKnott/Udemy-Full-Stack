@@ -542,6 +542,33 @@ function App() {
 
 export default App;
 
+Another Example:
+
+function App() {
+  const [time, setTime] = useState("Time");
+
+  function updateTime() {
+    let current = new Date().toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric"
+    });
+    setTime(current);
+  }
+
+  function autoUpdate() {
+    setInterval(updateTime, 1000);
+  }
+  return (
+    <div className="container">
+      <h1>{time}</h1>
+      <button onClick={updateTime}>Get Time</button>
+      <button onClick={autoUpdate}>Set Auto Update</button>
+    </div>
+  );
+}
+
 
 Destructuring
 
