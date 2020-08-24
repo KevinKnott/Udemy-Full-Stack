@@ -667,3 +667,33 @@ function App() {
     </div>
   );
 }
+
+Alternate version where you can use ternary conditioning statements
+
+function App() {
+  const [introText, setIntro] = useState("Hello");
+  const [isMousedOver, setMousedOver] = useState(false);
+
+  function handleMouseOver() {
+    setMousedOver(true);
+  }
+
+  function handleMouseOut() {
+    setMousedOver(false);
+  }
+
+  return (
+    <div className="container">
+      <h1>{introText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        style={{ backgroundColor: isMousedOver ? "black" : "white" }}
+      >
+        {" "}
+        Submit
+      </button>
+    </div>
+  );
+}
