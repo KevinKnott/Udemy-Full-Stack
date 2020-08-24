@@ -747,7 +747,11 @@ function App() {
 
   function setFullName(event) {
     const newValue = event.target.value;
+    const inputField = event.target.name;
 
+    setFullName(prevValue => {
+      if ()
+    })
     if (event.target.name === "fName") {
       setName({ fname: newValue, lname: name.lname });
     } else {
@@ -772,6 +776,50 @@ function App() {
           placeholder="Last Name"
           onChange={setFullName}
           value={name.lname}
+        />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
+
+
+This can be improved by realizing that you can use destructuring to capture the event and then pass an 
+anonymous function to the set state functions that captures the prevValues as a parameter:
+
+function App() {
+  const [name, setName] = useState({ fName: "", lName: "" });
+
+  function setFullName(event) {
+    const { value, name } = event.target;
+
+    setName((prevValue) => {
+      if (name === "fName") {
+        return { fName: value, lName: prevValue.lName };
+      } else {
+        return { fName: prevValue.fName, lName: value };
+      }
+    });
+
+  }
+
+  return (
+    <div className="container">
+      <h1>
+        Hello {name.fName} {name.lName}
+      </h1>
+      <form>
+        <input
+          name="fName"
+          placeholder="First Name"
+          onChange={setFullName}
+          value={name.fName}
+        />
+        <input
+          name="lName"
+          placeholder="Last Name"
+          onChange={setFullName}
+          value={name.lName}
         />
         <button>Submit</button>
       </form>
