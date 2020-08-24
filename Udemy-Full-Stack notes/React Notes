@@ -728,10 +728,53 @@ function App() {
 
 The above form is using the value field as the state value so that the value is considerd a controlled component.
 Please view the below link for more info. Basically it means that there is a single source of truth since the state
-and value are being updated at the same time to keep consistency.
+and value are being updated at the same time to keep consistency. Please note if you don't update the value within the
+event you will cause an error where the field will only  display the initial value and won't be updated.
 
 https://reactjs.org/docs/forms.html#controlled-components
 
 Please note that if you are trying to make a form you will normally have a submit button (type=sumbit) which
 can have the onSubmit event for you to pass in a new form. However in react this will cause the page to refresh.
 This is not what we want with single page apps so you use event.preventDefault() to stop the refresh.
+
+
+Complex State:
+
+You can use JS objects as a state instead of singel variables by calling the useState method with an object inside:
+
+function App() {
+  const [name, setName] = useState({ fname: "", lname: "" });
+
+  function setFullName(event) {
+    const newValue = event.target.value;
+
+    if (event.target.name === "fName") {
+      setName({ fname: newValue, lname: name.lname });
+    } else {
+      setName({ fname: name.fname, lname: newValue });
+    }
+  }
+
+  return (
+    <div className="container">
+      <h1>
+        Hello {name.fname} {name.lname}
+      </h1>
+      <form>
+        <input
+          name="fName"
+          placeholder="First Name"
+          onChange={setFullName}
+          value={name.fname}
+        />
+        <input
+          name="lName"
+          placeholder="Last Name"
+          onChange={setFullName}
+          value={name.lname}
+        />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
