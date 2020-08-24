@@ -731,3 +731,7 @@ Please view the below link for more info. Basically it means that there is a sin
 and value are being updated at the same time to keep consistency.
 
 https://reactjs.org/docs/forms.html#controlled-components
+
+Please note that if you are trying to make a form you will normally have a submit button (type=sumbit) which
+can have the onSubmit event for you to pass in a new form. However in react this will cause the page to refresh.
+This is not what we want with single page apps so you use event.preventDefault() to stop the refresh.
