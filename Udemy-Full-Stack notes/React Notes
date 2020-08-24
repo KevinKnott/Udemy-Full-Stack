@@ -635,3 +635,35 @@ ReactDOM.render(
   </table>,
   document.getElementById("root")
 );
+
+Event Handling
+
+handleMouseOver / handleMouseOut events (they have camel casing instead of regular styling)
+
+function App() {
+  const [introText, setIntro] = useState("Hello");
+  const [ourStyle, setStyle] = useState({ backgroundColor: "white" });
+
+  function handleMouseOver() {
+    setStyle({ backgroundColor: "black" });
+  }
+
+  function handleMouseOut() {
+    setStyle({ backgroundColor: "white" });
+  }
+
+  return (
+    <div className="container">
+      <h1>{introText}</h1>
+      <input type="text" placeholder="What's your name?" />
+      <button
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+        style={ourStyle}
+      >
+        {" "}
+        Submit
+      </button>
+    </div>
+  );
+}
