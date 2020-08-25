@@ -892,3 +892,77 @@ function App() {
     </div>
   );
 }
+
+This is actually quite a bit of code that can be reduced by using a spread operator. (like splicing in golang)
+
+
+const citrus = ["Lime", "Lemon", "Orange"]
+const fruits = ["Apple", "Banna", "Lime", "Lemon", "Orange"]]
+
+our output would be = ["Apple", "Banna", ...citrus]
+
+This also works with JS Objects:
+
+const fullName = {
+  fName: "James",
+  lName: "Bond"
+};
+
+const user = {
+  ...fullName,
+  id: 1,
+  username: "jamesbond007"
+};
+
+Our output would equal = {fName: "James", lName: "Bond", id: 1, username: "jamesbond007"}
+
+So for our last example we can do the following:
+
+const [contact, setContact] = useState({
+    fName: "",
+    lName: "",
+    email: ""
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+
+    setContact(prevValue => {
+      return {
+        ...prevValue,
+        //Also it will be hopefully to note that to use a variable as a key you must call it as an object. For example
+        [name]: value
+      };
+    });
+  }
+
+  return (
+    <div className="container">
+      <h1>
+        Hello {contact.fName} {contact.lName}
+      </h1>
+      <p>{contact.email}</p>
+      <form>
+        <input
+          onChange={handleChange}
+          name="fName"
+          value={contact.fName}
+          placeholder="First Name"
+        />
+        <input
+          onChange={handleChange}
+          name="lName"
+          value={contact.lName}
+          placeholder="Last Name"
+        />
+        <input
+          onChange={handleChange}
+          name="email"
+          value={contact.email}
+          placeholder="Email"
+        />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+}
