@@ -966,3 +966,63 @@ const [contact, setContact] = useState({
     </div>
   );
 }
+
+Putting things together for practice
+
+
+function App() {
+  const [items, setItems] = useState([]);
+  const [input, setInput] = useState("");
+
+  function addItems() {
+    setItems([...items, input]);
+    setInput("");
+  }
+
+  function inputChange(event) {
+    const { value } = event.target;
+    setInput(value);
+  }
+
+  function deleteItem(id) {
+    setItems((prevItems) => {
+      return prevItems.filter((value, index) => index !== id);
+    });
+  }
+  return (
+    <div className="container">
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input onChange={inputChange} type="text" value={input} />
+        <button onClick={addItems}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          {items.map((item, index) => (
+            <Item text={item} id={index} onChecked={deleteItem} />
+          ))}
+          {/* <Item items={items} /> */}
+          {/* <li>A Item </li> */}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function Item(props) {
+  return (
+    <li
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
+      key={props.index}
+    >
+      {props.text}
+    </li>
+  );
+}
+
