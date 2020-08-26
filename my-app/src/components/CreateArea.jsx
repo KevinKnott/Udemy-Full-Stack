@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function CreateArea() {
+function CreateArea(props) {
   const [localNote, setlocalNote] = useState({ title: '', content: '' });
 
   function handleChange(event) {
@@ -12,6 +12,12 @@ function CreateArea() {
         [name]: value,
       };
     });
+  }
+
+  function submitNode(event) {
+    props.handleAdd(localNote);
+    setlocalNote({ title: '', content: '' });
+    event.preventDefault();
   }
   return (
     <div>
@@ -30,7 +36,7 @@ function CreateArea() {
           cols="30"
           rows="3"
         ></textarea>
-        <button>Add</button>
+        <button onClick={submitNode}>Add</button>
       </form>
     </div>
   );
