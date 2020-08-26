@@ -16,9 +16,15 @@ function CreateArea() {
   return (
     <div>
       <form>
-        <input onChange={handleChange} name="title" placeholder="Title" />
+        <input
+          onChange={handleChange}
+          value={localNote.title}
+          name="title"
+          placeholder="Title"
+        />
         <textarea
           onChange={handleChange}
+          value={localNote.content}
           name="content"
           placeholder="Take a note..."
           cols="30"
